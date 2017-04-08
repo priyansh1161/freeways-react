@@ -1,12 +1,17 @@
 import React from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import './styles.css';
 
 const Footer = () => (
   <div className="footer">
     <div className="container text-center">
-      <span><a href="#">FAQ</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Privacy</a></span>
-      <strong>&copy; Copyright 2016 Hyperdriven Services Pvt. Ltd. &middot; All Rights Reserved.</strong>
+
+      <Row className="show-grid">
+        <Col md={4} className="text-left">All Rights Reserved</Col>
+        <Col md={4}><strong>&copy; Copyright 2016 Hyperdriven Services Pvt. Ltd.</strong></Col>
+        <Col md={4} className="text-right"><a href="#">FAQ</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Privacy</a></Col>
+      </Row>
     </div>
   </div>
 );
