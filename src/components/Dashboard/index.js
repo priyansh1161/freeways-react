@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 import { Jumbotron, Grid, Row, Col, Panel } from 'react-bootstrap';
 
-import './Dashboard.css';
+import './styles.css';
 
 const Dashboard = () => (
   <div>

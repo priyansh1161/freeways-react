@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 
-import Navbar from '../partials/Navbar';
-import Footer from '../partials/Footer';
+import Navbar from '../../partials/Navbar';
+import Footer from '../../partials/Footer';
 
-import './App.css';
+import './styles.css';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
