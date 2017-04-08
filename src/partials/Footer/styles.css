@@ -1,0 +1,24 @@
+.footer > .container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  padding: 10px;
+  background-color: #282a36;
+}
+
+strong {
+  color: white;
+}
