@@ -1,6 +1,7 @@
 .app {
   /* Margin bottom by footer height */
   margin-bottom: 45px;
+  margin-top: 80px;
 }
 
 @media (max-width: 768px) {

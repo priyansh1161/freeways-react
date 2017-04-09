@@ -1,0 +1,21 @@
+.card:hover, .btn-add:hover {
+  box-shadow: 1px 1px 5px #DDD, -1px -1px 5px #DDD;
+}
+
+.card {
+  margin: 5px;
+  padding: 5px;
+}
+
+.btn-add {
+  border-radius: 50%;
+  background-color: orangered;
+  height: 40px;
+  width: 40px;
+  border: 1px solid orangered;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+}

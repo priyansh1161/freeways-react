@@ -32,10 +32,12 @@
   "dependencies": {
     "axios": "^0.16.1",
     "bootswatch": "^3.3.7",
-    "moment": "^2.18.1",
+    "moment": "2.15.1",
     "object-assign": "4.1.0",
     "react": "15.4.1",
+    "react-addons-shallow-compare": "^15.5.2",
     "react-bootstrap": "^0.30.8",
+    "react-dates": "^10.0.0",
     "react-datetime": "^2.8.9",
     "react-dom": "15.4.1",
     "react-redux": "5.0.1",

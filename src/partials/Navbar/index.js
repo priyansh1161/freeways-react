@@ -4,7 +4,7 @@ import LoadingBar from 'react-redux-loading-bar'
 
 const NavbarComponent = () => (
   <div>
-    <Navbar inverse collapseOnSelect style={{zIndex : 1}}>
+    <Navbar fixedTop collapseOnSelect style={{zIndex : 1}}>
       <Navbar.Header>
         <Navbar.Brand>
           <a href="#">freeways</a>
