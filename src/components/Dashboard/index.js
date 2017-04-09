@@ -11,9 +11,9 @@ const Dashboard = () => (
     <Jumbotron className="text-center">
       <h1>COLLECT MOMENTS, NOT THINGS</h1>
       <p>Get bikes and places on rent, hassle-free.</p>
-      <Link to="/rides/" className="btn btn-lg btn-primary">Bikes</Link>
-      <Link to="/stays/" className="btn btn-lg btn-primary">Places</Link>
-      <Link to="/experiences/" className="btn btn-lg btn-primary">Moments</Link>
+      <Link to="/rides" className="btn btn-lg btn-primary">Bikes</Link>
+      <Link to="/stays" className="btn btn-lg btn-primary">Places</Link>
+      <Link to="/experiences" className="btn btn-lg btn-primary">Moments</Link>
     </Jumbotron>
     <Grid>
       <Row className="show-grid text-center">
