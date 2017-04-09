@@ -13,7 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <LoadingBar/>
+        <LoadingBar style={{zIndex: 3}}/>
         <div className="app">
           <Navbar/>
           <div className="container">{this.props.children}</div>
