@@ -5,7 +5,7 @@ import { loadingBarReducer } from 'react-redux-loading-bar'
 
 import bikes from './bikesReducer';
 export default combineReducers({
+  bikes,
   routing: routerReducer,
   loadingBar : loadingBarReducer,
-  bikes
 });

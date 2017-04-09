@@ -12,11 +12,13 @@ import './styles.css';
 class App extends React.Component {
   render() {
     return (
-      <div className="app">
+      <div>
         <LoadingBar/>
-        <Navbar/>
-        <div className="container">{this.props.children}</div>
-        <Footer/>
+        <div className="app">
+          <Navbar/>
+          <div className="container">{this.props.children}</div>
+          <Footer/>
+        </div>
       </div>
     );
   }
