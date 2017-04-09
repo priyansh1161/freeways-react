@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import Navbar from '../../partials/Navbar';
 import Footer from '../../partials/Footer';
-import LoadingBar from 'react-redux-loading-bar'
+import LoadingBar from 'react-redux-loading-bar';
 
 import './styles.css';
 

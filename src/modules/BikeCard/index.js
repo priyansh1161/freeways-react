@@ -1,15 +1,17 @@
 import React, { PropTypes } from 'react';
 
-import { InputGroup, FormControl, Image, Label } from 'react-bootstrap';
-
-import PanelPrimary from '../PanelPrimary';
+import './styles.css';
 
 const BikeCard = ({ name, model, mileage, price, imageURL }) => (
-  <PanelPrimary
-    header={<h3>{name} <small>{model}</small><span className="spacer"/><Label bsStyle="danger">{mileage} KM/L</Label></h3>}
-    footer={<InputGroup><FormControl type="number"/><InputGroup.Addon>@ {price}&#8377;/day</InputGroup.Addon></InputGroup>}>
-    <Image src={imageURL} responsive/>
-  </PanelPrimary>
+  <div className="card">
+    <img src={imageURL} className="img-responsive"/>
+    <div className="card-info">
+      <button className="btn-add">+</button>
+      <h6 className="text-center">{name} <small>{model}</small></h6>
+      <h6 className="text-muted text-center">&#8377;{price}</h6>
+      <h6 className="text-muted text-center">{mileage} Km/L</h6>
+    </div>
+  </div>
 );
 
 BikeCard.propTypes = {
