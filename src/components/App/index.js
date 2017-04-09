@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 
 import Navbar from '../../partials/Navbar';
 import Footer from '../../partials/Footer';
+import LoadingBar from 'react-redux-loading-bar'
 
 import './styles.css';
 
@@ -12,6 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <LoadingBar/>
         <Navbar/>
         <div className="container">{this.props.children}</div>
         <Footer/>
