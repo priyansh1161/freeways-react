@@ -20,8 +20,10 @@ export function getBikes(city, startDate, endDate, qty = 10) {
       })
       .catch((err) => {
         console.log(err);
-        dispatch(bikesLoadFailure(err));
+        // dispatch(bikesLoadFailure(err));
         dispatch(hideLoading());
+        throw(err); // catch it at dispatch point
       });
   }
 }
+
