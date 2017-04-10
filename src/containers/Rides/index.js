@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { InputGroup, Glyphicon, FormControl } from 'react-bootstrap';
 import { DateRangePicker } from 'react-dates';
 
 import BikeCard from '../../modules/BikeCard';

@@ -16,7 +16,7 @@ class BikeCard extends React.Component {
     this.props.actions.addToCart(this.props);
     if(this.state.count === '+')
       this.setState({count : 1 });
-    else
+    else if (this.state.count < 2)
       this.setState({count : this.state.count + 1})
   }
   render (){
