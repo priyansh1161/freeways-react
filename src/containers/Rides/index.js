@@ -25,21 +25,29 @@ class Rides extends React.Component {
     this.generateCards = this.generateCards.bind(this);
     this.selectLocation = this.selectLocation.bind(this);
   }
+<<<<<<< HEAD
   componentWillReceiveProps({bikes, locations}){
     this.setState({ bikes, locations, selectedLocation : locations[0].__id });
     this.props.actions.selectBikeLocation(locations[0].__id);
   }
+=======
+  
+>>>>>>> Add modal module
   componentWillMount(){
     // fetch locations
     this.props.actions.getLocations()
   }
-  submit(e){
+
+  componentWillReceiveProps({bikes, locations}){
+    this.setState({ bikes, locations, selectedLocation : locations[0].__id });
+  }
+
+  submit(){
     if(!this.state.startDate || !this.state.endDate){
       // send some toast to select dates;
     }
     else {
       let state = this.state;
-      console.log(state.selectedLocation);
       this.props.actions.getBikes(state.selectedLocation, state.startDate, state.endDate);
 
     }
@@ -85,6 +93,8 @@ class Rides extends React.Component {
     this.props.actions.selectBikeLocation(e.target.value);
   }
   render(){
+    const smallDevice = window.matchMedia('(max-width: 768px)').matches;
+    const orientation = smallDevice ? 'vertical' : 'horizontal';
     return (
       <div>
         <div className="box-filters">
@@ -97,8 +107,8 @@ class Rides extends React.Component {
             onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
             focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={focusedInput => this.setState({ focusedInput })}
-            // withFullScreenPortal={true}
-            // orientation="vertical"
+            withFullScreenPortal={smallDevice}
+            orientation={orientation}
           />
           <button className="btn btn-primary btn-place" onClick={this.submit} >Search</button>
         </div>

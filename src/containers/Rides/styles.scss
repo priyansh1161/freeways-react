@@ -17,15 +17,31 @@
 
 .box-filters {
     display: flex;
-    align-content: center;
-    justify-content: center;
+    flex-direction: column;
     & > * {
-        margin: auto 5px;
+        margin: 5px auto;
+        width: 286px;
+        // border: 1px solid red;
     }
-    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .box-filters {
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        & > * {
+            margin: auto 5px;
+            min-width: 286px;
+        }
+        margin-bottom: 10px;
+    }
+
+    .btn-place {
+        margin: 0;
+    }
 }
 
 .btn-place {
     height: 50px;
-    margin: 0;
 }
