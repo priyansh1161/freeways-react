@@ -4,5 +4,6 @@ export default {
   stays : [],
   cart : [],
   user : {},
-  locations : []
+  locations : [],
+  selectedLocation : ''
 }

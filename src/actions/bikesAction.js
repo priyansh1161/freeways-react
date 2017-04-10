@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {BIKE_LOAD_SUCCESS, LOCATIONS_LOAD_SUCCESS } from '../constants/actionTypes';
+import {BIKE_LOAD_SUCCESS, LOCATIONS_LOAD_SUCCESS, SELECTED_LOCATION_CHANGE } from '../constants/actionTypes';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { prodBaseURI as baseURI } from '../constants/resources';
 function bikesLoadSuccess(payload) {
@@ -63,7 +63,9 @@ export function getLocations(){
       .catch((err) =>{
         throw err;
       })
-
   }
 }
 
+export function selectBikeLocation(payload){
+  return {type: SELECTED_LOCATION_CHANGE, payload}
+}

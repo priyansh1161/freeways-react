@@ -23,9 +23,11 @@ class Rides extends React.Component {
     };
     this.submit = this.submit.bind(this);
     this.generateCards = this.generateCards.bind(this);
+    this.selectLocation = this.selectLocation.bind(this);
   }
   componentWillReceiveProps({bikes, locations}){
     this.setState({ bikes, locations, selectedLocation : locations[0].__id });
+    this.props.actions.selectBikeLocation(locations[0].__id);
   }
   componentWillMount(){
     // fetch locations
@@ -39,6 +41,7 @@ class Rides extends React.Component {
       let state = this.state;
       console.log(state.selectedLocation);
       this.props.actions.getBikes(state.selectedLocation, state.startDate, state.endDate);
+
     }
   }
   generateCards(){
@@ -77,11 +80,15 @@ class Rides extends React.Component {
     }
     return toReturn;
   }
+  selectLocation(e){
+    this.setState({ selectedLocation : e.target.value});
+    this.props.actions.selectBikeLocation(e.target.value);
+  }
   render(){
     return (
       <div>
         <div className="box-filters">
-          <select className="select-place" onChange={e => this.setState({ selectedLocation : e.target.value})}>
+          <select className="select-place" onChange={this.selectLocation}>
             {this.state.locations.map(curr => <option value={curr.__id} key={curr.__id}>{curr.name}</option> )}
           </select>
           <DateRangePicker
@@ -90,8 +97,8 @@ class Rides extends React.Component {
             onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
             focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={focusedInput => this.setState({ focusedInput })}
-            withFullScreenPortal={true}
-            orientation="vertical"
+            // withFullScreenPortal={true}
+            // orientation="vertical"
           />
           <button className="btn btn-primary btn-place" onClick={this.submit} >Search</button>
         </div>
