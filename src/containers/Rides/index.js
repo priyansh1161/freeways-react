@@ -2,6 +2,9 @@ import React from 'react';
 
 import { DateRangePicker } from 'react-dates';
 
+import { Glyphicon } from 'react-bootstrap';
+
+import ModalPrimary from '../../modules/ModalPrimary';
 import BikeCard from '../../modules/BikeCard';
 import {connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -25,21 +28,22 @@ class Rides extends React.Component {
     this.generateCards = this.generateCards.bind(this);
     this.selectLocation = this.selectLocation.bind(this);
   }
-  componentWillReceiveProps({bikes, locations}){
-    this.setState({ bikes, locations, selectedLocation : locations[0].__id });
-    this.props.actions.selectBikeLocation(locations[0].__id);
-  }
+  
   componentWillMount(){
     // fetch locations
     this.props.actions.getLocations()
   }
-  submit(e){
+
+  componentWillReceiveProps({bikes, locations}){
+    this.setState({ bikes, locations, selectedLocation : locations[0].__id });
+  }
+
+  submit(){
     if(!this.state.startDate || !this.state.endDate){
       // send some toast to select dates;
     }
     else {
       let state = this.state;
-      console.log(state.selectedLocation);
       this.props.actions.getBikes(state.selectedLocation, state.startDate, state.endDate);
 
     }
@@ -85,6 +89,8 @@ class Rides extends React.Component {
     this.props.actions.selectBikeLocation(e.target.value);
   }
   render(){
+    const smallDevice = window.matchMedia('(max-width: 768px)').matches;
+    const orientation = smallDevice ? 'vertical' : 'horizontal';
     return (
       <div>
         <div className="box-filters">
@@ -97,8 +103,8 @@ class Rides extends React.Component {
             onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
             focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={focusedInput => this.setState({ focusedInput })}
-            // withFullScreenPortal={true}
-            // orientation="vertical"
+            withFullScreenPortal={smallDevice}
+            orientation={orientation}
           />
           <button className="btn btn-primary btn-place" onClick={this.submit} >Search</button>
         </div>
@@ -107,6 +113,50 @@ class Rides extends React.Component {
             {this.generateCards() && <NothingToShow />}
           </div>
         </div>
+        <ModalPrimary
+          btnText={<Glyphicon glyph="shopping-cart"/>}
+          bsClass="fab-left"
+          title="Cart"
+          footer={
+            <div style={{display: 'flex'}}>
+              <h4>Total: &#8377;1400</h4><div style={{flexGrow: 1}}/>
+              <button className="btn btn-danger">Checkout</button>
+            </div>
+          }>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Bike</th>
+                <th>Qty</th>
+                <th>Cost</th>  
+              </tr>  
+            </thead>
+            <tbody>
+              <tr>
+                <td>Yamaha Fasino STD</td>
+                <td className="tr-qty">
+                  <div className="container-qty">
+                    <button className="btn-qty">-</button>
+                    <div className="text-qty">3</div>
+                    <button className="btn-qty">+</button>
+                  </div>
+                </td>
+                <td>&#8377; 300</td>
+              </tr>
+              <tr>
+                <td>Yamaha FZS F1</td>
+                <td>
+                  <div className="container-qty">
+                    <button className="btn-qty">-</button>
+                    <div className="text-qty">2</div>
+                    <button className="btn-qty">+</button>
+                  </div>
+                </td>
+                <td>&#8377; 1100</td>
+              </tr>
+            </tbody>
+          </table>  
+        </ModalPrimary>
       </div>
     )
   }
@@ -127,7 +177,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch){
   return {
     actions : bindActionCreators(bikesActions, dispatch)
-  }
+  };
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Rides);
