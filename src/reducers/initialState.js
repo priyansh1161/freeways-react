@@ -1,12 +1,8 @@
 
 export default {
-  bikes : [],
+  bikes : {},
   stays : [],
   cart : [],
-  user : {
-    name : '',
-    email : '',
-    phone : '',
-    previousOrders : []
-  }
+  user : {},
+  locations : []
 }

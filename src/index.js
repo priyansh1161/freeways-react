@@ -11,7 +11,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import 'bootswatch/paper/bootstrap.min.css';
 import {getBikes} from  './actions/bikesAction'; //for testing only
 const store = configureStore();
-setInterval(()=> store.dispatch(getBikes('baga',1491727803000,1491814203000)),5000);
+// setTimeout(()=> store.dispatch(getBikes('calangute',1491727803000,1491814203000)),5000);
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);

@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 
 import Dashboard from './components/Dashboard';
-import Rides from './components/Rides';
+import Rides from './containers/Rides';
 import NotFoundPage from './components/NotFoundPage';
 
 export default (

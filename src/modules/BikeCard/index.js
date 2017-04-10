@@ -18,7 +18,7 @@ BikeCard.propTypes = {
   name: PropTypes.string,
   model: PropTypes.string,
   mileage: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   imageURL: PropTypes.string,
 };
 
