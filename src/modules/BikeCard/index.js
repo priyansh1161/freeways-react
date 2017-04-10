@@ -26,7 +26,7 @@ class BikeCard extends React.Component {
         <div className="card-info">
           <button className="btn-add" onClick={this.addToCart} >{this.state.count}</button>
           <h6 className="text-center">{this.props.name} <small>{this.props.model}</small></h6>
-          <h6 className="text-muted text-center">&#8377;{this.props.price} /Day</h6>
+          <h6 className="text-muted text-center">&#8377;{this.props.price}/day</h6>
           <h6 className="text-muted text-center">{this.props.mileage} Km/L</h6>
         </div>
       </div>

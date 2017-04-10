@@ -1,13 +1,12 @@
 import React from 'react';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
-import LoadingBar from 'react-redux-loading-bar'
 
 const NavbarComponent = () => (
   <div>
     <Navbar fixedTop collapseOnSelect style={{zIndex : 1}}>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#">freeways</a>
+          <a href="#" style={{ color: '#eb3812' }}>freeways</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

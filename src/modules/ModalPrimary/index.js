@@ -21,10 +21,12 @@ class ModalPrimary extends React.Component {
   render() {
     return (
       <div>
-        <Button bsStyle={this.props.bsStyle || 'primary'} onClick={this.open.bind(this)}>{this.props.btnText}</Button>
+        <Button onClick={this.open.bind(this)} bsClass={this.props.bsClass}>{this.props.btnText}</Button>
         <Modal show={this.state.isOpen} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.title}</Modal.Title>
+            <Modal.Title>
+              <div className="text-center">{this.props.title}</div>
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {this.props.children}
