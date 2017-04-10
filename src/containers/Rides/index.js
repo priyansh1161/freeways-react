@@ -6,6 +6,7 @@ import BikeCard from '../../modules/BikeCard';
 import {connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as bikesActions from '../../actions/bikesAction';
+import NothingToShow from '../../modules/NothingToShow';
 import 'react-dates/lib/css/_datepicker.css';
 import './styles.scss';
 
@@ -103,7 +104,7 @@ class Rides extends React.Component {
         </div>
         <div className="container-fluid">
           <div className="row">
-            {this.generateCards()}
+            {this.generateCards() && <NothingToShow />}
           </div>
         </div>
       </div>
