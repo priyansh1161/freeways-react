@@ -106,11 +106,11 @@ class Rides extends React.Component {
             withFullScreenPortal={smallDevice}
             orientation={orientation}
           />
-          <button className="btn btn-primary btn-place" onClick={this.submit} >Search</button>
+          <button className="btn btn-primary btn-place" onClick={this.submit}>Search</button>
         </div>
         <div className="container-fluid">
           <div className="row">
-            {this.generateCards() && <NothingToShow />}
+            { Object.keys(this.state.bikes).length ? this.generateCards() : <NothingToShow /> }
           </div>
         </div>
         <ModalPrimary

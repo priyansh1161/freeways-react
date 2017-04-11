@@ -5,12 +5,14 @@ import App from './components/App';
 
 import Dashboard from './components/Dashboard';
 import Rides from './containers/Rides';
+import Stays from './containers/Stays';
 import NotFoundPage from './components/NotFoundPage';
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Dashboard}/>
     <Route path="rides" component={Rides}/>
+    <Route path="stays" component={Stays}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
