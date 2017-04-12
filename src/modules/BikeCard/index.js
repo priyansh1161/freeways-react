@@ -13,7 +13,16 @@ class BikeCard extends React.Component {
     }
   }
   addToCart(){
-    this.props.actions.addToCart(this.props);
+    let props = this.props;
+    this.props.actions.addToCart({
+      id : props.id,
+      name : props.name,
+      location : props.location,
+      model : props.model,
+      price : props.price,
+      vendors : props.vendors,
+      qty : 1
+    });
     if(this.state.count === '+')
       this.setState({count : 1 });
     else if (this.state.count < 2)
