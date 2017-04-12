@@ -1,0 +1,46 @@
+.stay-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media(min-width: 768px) {
+  .stay-container {
+    flex-direction: row-reverse;
+    & > .main {
+      width: 66.67%;
+    }
+    & > .sidebar {
+      width: 33.33%;
+    }
+  }
+}
+
+@media(min-width: 992px) {
+  .stay-container {
+    & > .main {
+      width: 75%;
+    }
+    & > .sidebar {
+      width: 25%;
+    }
+  }
+}
+
+@media(min-width: 1200px) {
+  .stay-container {
+    & > .main {
+      width: 80%;
+    }
+    & > .sidebar {
+      width: 20%;
+    }
+  }
+}
+
+.box-support {
+  display: flex;
+  align-content: center;
+  & > .stars {
+    margin: 0 20px;
+  }
+}
