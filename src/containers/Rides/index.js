@@ -104,23 +104,14 @@ class Rides extends React.Component {
             withFullScreenPortal={smallDevice}
             orientation={orientation}
           />
-<<<<<<< HEAD
-
           <button className="btn btn-primary btn-place" onClick={this.submit} >Search</button>
         </div>
         <div className="container-fluid">
           <div className="row">
             { Object.keys(this.state.bikes).length ? this.generateCards() : <NothingToShow />}
-=======
-          <button className="btn btn-primary btn-place" onClick={this.submit}>Search</button>
-        </div>
-        <div className="container-fluid">
-          <div className="row">
-            { Object.keys(this.state.bikes).length ? this.generateCards() : <NothingToShow /> }
->>>>>>> ryzokuken-master
           </div>
+          <Cart />
         </div>
-        <Cart />
       </div>
     )
   }
