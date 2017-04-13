@@ -20,7 +20,7 @@ class StayCard extends React.Component {
   render() {
     return (
       <div className="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <img src={this.props.imageURL} className="img-responsive" style={{borderRadius: '5%'}}/>
+        <img src={`data:image/png;base64,${this.props.imageURL}`} className="img-responsive" style={{borderRadius: '5%'}}/>
         <div className="card-info">
           <h6 className="text-center">{this.props.title} <small>{this.props.capacity}</small></h6>
           <h6 className="text-muted text-center">&#8377;{this.props.price}/day</h6>

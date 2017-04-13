@@ -1,7 +1,8 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { DateRangePicker } from 'react-dates';
-
+import * as stayActions from '../../actions/staysAction';
 import StayCard from '../../modules/StayCard';
 
 class Stays extends React.Component {
@@ -12,7 +13,7 @@ class Stays extends React.Component {
       endDate : null,
       focusedInput : null,
       locations : [],
-      stays : {},
+      stays : [],
       selectedLocation : '',
       rooms: 1
     };
@@ -22,11 +23,12 @@ class Stays extends React.Component {
   }
 
   componentWillMount(){
-    // this.props.actions.getLocations();
+    this.props.actions.getLocations();
   }
 
   componentWillReceiveProps({stays, locations}){
-    this.setState({ stays, locations, selectedLocation : locations[0].__id });
+    console.log(stays,locations);
+    this.setState({ stays, locations, selectedLocation : locations[0] });
   }
 
   submit(){
@@ -35,17 +37,27 @@ class Stays extends React.Component {
     }
     else {
       let state = this.state;
-      this.props.actions.getAllStays(state.selectedLocation, state.startDate, state.endDate);
+      this.props.actions.getAllStays(state.selectedLocation, state.startDate, state.endDate,state.rooms);
 
     }
   }
 
   generateCards(){
-    return <StayCard title="Malibu Dream Airstream" specification="Entire home/apt" stars={2.7} price={32256} imageURL="https://a0.muscache.com/im/pictures/307a5575-c3a4-4b21-8127-a37875ec1239.jpg?aki_policy=large"/>;
+    return this.state.stays.map(curr => {
+      return <StayCard title={curr.name}
+                       specification={curr.stayType}
+                       stars={curr.stars}
+                       price={curr.price}
+                       key={curr._id}
+                       id={curr._id}
+                       imageURL={curr.photos[0]}
+      />;
+    });
+
   }
   selectLocation(e){
     this.setState({ selectedLocation : e.target.value});
-    this.props.actions.selectStaysLocation(e.target.value);
+    // this.props.actions.selectStaysLocation(e.target.value);
   }
 
   render() {
@@ -55,7 +67,7 @@ class Stays extends React.Component {
       <div>
         <div className="box-filters">
           <select className="select-place" onChange={this.selectLocation}>
-            {this.state.locations.map(curr => <option value={curr.__id} key={curr.__id}>{curr.name}</option> )}
+            {this.state.locations.map(curr => <option value={curr} key={curr}>{curr}</option> )}
           </select>
           <DateRangePicker
             startDate={this.state.startDate} // momentPropTypes.momentObj or null,
@@ -77,4 +89,21 @@ class Stays extends React.Component {
   }
 }
 
-export default Stays;
+function mapStaysToProps(state){
+  let locations = state.staysLocations.sort(function(a, b) {
+    let locationA = a.toUpperCase();
+    let locationB = b.toUpperCase();
+    return locationA < locationB ? -1 : 1;
+  });
+  return {
+    locations,
+    stays : state.stays
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    actions : bindActionCreators(stayActions, dispatch)
+  };
+}
+export default connect(mapStaysToProps, mapDispatchToProps)(Stays);

@@ -25,7 +25,7 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .box-filters {
         flex-direction: row;
         align-content: center;
@@ -40,6 +40,23 @@
     .btn-place {
         margin: 0;
     }
+}
+
+@media (min-width: 768px) {
+  .box-filters {
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    & > * {
+      margin: auto 5px;
+      width: auto;
+    }
+    margin-bottom: 10px;
+  }
+
+  .btn-place {
+    margin: 0;
+  }
 }
 
 .btn-place {

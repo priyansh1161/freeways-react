@@ -6,14 +6,16 @@ import cart from './cartReducer';
 import bikes from './bikesReducer';
 import auth from './authReducer';
 import stays from './staysReducer';
-import BikeLocations from './locationsReducer';
+import BikeLocations from './bikeLocationsReducer';
 import selectedLocation from './bikeLocationSelectReducer';
+import staysLocations from './stayLocationReducer';
 export default combineReducers({
   bikes,
   cart,
   auth,
   stays,
   BikeLocations,
+  staysLocations,
   selectedLocation,
   routing: routerReducer,
   loadingBar : loadingBarReducer,
