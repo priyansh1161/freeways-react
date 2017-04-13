@@ -1,0 +1,155 @@
+.stay-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media(min-width: 768px) {
+  .stay-container {
+    flex-direction: row-reverse;
+    & > .main {
+      width: 66.67%;
+    }
+    & > .sidebar {
+      width: 33.33%;
+    }
+  }
+}
+
+@media(min-width: 992px) {
+  .stay-container {
+    & > .main {
+      width: 75%;
+    }
+    & > .sidebar {
+      width: 25%;
+    }
+  }
+}
+
+@media(min-width: 1200px) {
+  .stay-container {
+    & > .main {
+      width: 80%;
+    }
+    & > .sidebar {
+      width: 20%;
+    }
+  }
+}
+
+.box-support {
+  display: flex;
+  align-content: center;
+  & > .stars {
+    margin: 0 20px;
+  }
+}
+
+.amenities {
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  padding: 10px 0;
+  display: flex;
+  & i {
+    font-size: 50px;
+  }
+  & > div {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.sidebar {
+  border-left: 1px solid gainsboro;
+}
+
+.main {
+  font-size: 16px;
+}
+
+.info {
+  border-top: 1px solid gainsboro;
+}
+
+.info > div {
+  display: flex;
+  & > strong {
+    width: 20%;
+    padding: 20px;
+  }
+  & > div {
+    width: 40%;
+    border-bottom: 1px solid gainsboro;
+      padding: 20px;
+    & .fa {
+      margin-right: 20px;
+    }
+  }
+  & > .fuller {
+    width: 80%;
+  }
+}
+
+.box-reviews {
+  display: flex;
+  align-items: center;
+  & > * {
+    margin: 20px;
+  }
+  & > .spacer {
+    flex-grow: 1;
+  }
+}
+
+ul.nav.nav-tabs {
+  border-bottom: 1px solid gainsboro;
+}
+
+table {
+  width: 100%;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+}
+
+.reviews {
+  border-top: 1px solid gainsboro;
+  padding-top: 20px;
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+}
+
+.img-display {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.review-buttons {
+  display: flex;
+  & > .spacer {
+    flex-grow: 1;
+  }
+}
+
+.btn {
+  padding-right: 5px !important;
+  & > .border-right {
+    border-right: 1px solid white;
+  }
+  & > span {
+    padding: 10px;
+  }
+}
+
+.review {
+  border-bottom: 1px solid gainsboro;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 10px;
+}
