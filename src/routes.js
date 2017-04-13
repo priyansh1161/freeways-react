@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import Rides from './containers/Rides';
 import Stays from './containers/Stays';
 import Stay from './containers/Stay';
+import Auth from './containers/Auth';
 import NotFoundPage from './components/NotFoundPage';
 
 export default (
@@ -17,6 +18,7 @@ export default (
       <IndexRoute component={Stays}/>
       <Route path=":id" component={Stay}/>
     </Route>
+    <Route path="auth" component={Auth}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
