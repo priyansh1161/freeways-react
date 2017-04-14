@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Carousel, Tabs, Tab, Glyphicon } from 'react-bootstrap';
+import { DateRangePicker } from 'react-dates';
 
 import './styles.scss';
 import 'font-awesome/css/font-awesome.css';
@@ -36,13 +37,19 @@ class Stay extends React.Component {
           </Carousel.Item>
         </Carousel>
         <div className="stay-container">
-          <div className="sidebar">SIDEBAR</div>
+          <div className="sidebar">
+            <h4 className="price text-center">₹ 2,391 <small>per night</small></h4>
+            <DateRangePicker/>
+            <input type="number" placeholder="Guests"/>
+            <button className="btn btn-danger">Request To Book</button>
+            <p className="text-muted text-center">You won't be charged yet</p>
+          </div>
           <div className="main">
             <Tabs defaultActiveKey={1}>
               <Tab eventKey={1} title="Overview">
                 <h2>The best position in Hvar!</h2>
                 <div className="box-support">
-                  <p className="text-muted">Hvar, Dalmatia, Croatia</p>
+                  <p className="text-muted text-center">Hvar, Dalmatia, Croatia</p>
                   <div className="stars">
                     {[
                       <Glyphicon glyph="star"/>,
@@ -286,7 +293,17 @@ class Stay extends React.Component {
                   </div>
                 </div>
               </Tab>
-              <Tab eventKey={3} title="The Host">Tab 3 content</Tab>
+              <Tab eventKey={3} title="The Host">
+                <h3>Hosted by Ivana & Lorenzo</h3>
+                <p>Split, Croatia &middot; Joined in September 2012</p>
+                <span className="larger"><span className="label label-warning">692</span> Reviews <i className="fa fa-check"></i> Verified</span>
+                <p>My husband Lorenzo and I are always looking for the new ways to present Hvar and our apartments, so the guests can be satisfied and want to come back. I am running my own business and Lorenco is the director in the parking office. </p>
+                <p>Our life motto is: "Per aspera ad astra" or "Through hardships to the stars", which very well reflects all of our life efforts.</p>
+                <p>If you have questions or need any informations, do not hesitate to contact us.</p>
+                <button className="btn btn-primary">Contact Host</button><br/>
+                Response rate: <strong>100%</strong><br/>
+                Response time: <strong>within an hour</strong>
+              </Tab>
               <Tab eventKey={4} title="Location">Tab 3 content</Tab>
             </Tabs>
           </div>
