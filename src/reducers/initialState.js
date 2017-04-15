@@ -5,5 +5,16 @@ export default {
   cart : [],
   user : {},
   locations : [],
-  selectedLocation : ''
-}
+  selectedLocation : '',
+  stay : {
+    photos : [],
+    reviews : [],
+    space : {
+      rules : ''
+    },
+    facilities : [],
+    location : {
+
+    }
+  }
+};

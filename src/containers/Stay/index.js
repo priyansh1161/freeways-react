@@ -1,150 +1,58 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as staysActions from '../../actions/staysAction';
 import { Carousel, Tabs, Tab, Glyphicon } from 'react-bootstrap';
-
+import Overview from './Overview';
 import './styles.scss';
 import 'font-awesome/css/font-awesome.css';
 
 class Stay extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      stay : {
+        photos : [],
+        reviews : [],
+        space : {
+          rules : ''
+        },
+        facilities : []
+      },
+      data : false
+    };
+    this.generateCarouselItems = this.generateCarouselItems.bind(this);
+
+  }
+  componentWillMount(){
+    this.props.actions.getStayDetails(this.props.params.id);
+  }
+  componentWillReceiveProps({stay}){
+    this.setState({stay, data : true});
+  }
+  generateCarouselItems(){
+    return this.state.stay.photos.map(curr => <Carousel.Item>
+      <div style={{
+        height: '300px',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundImage: `url(${curr})`
+      }}/>
+    </Carousel.Item> );
+  }
+
   render() {
     return (
       <div>
         <Carousel>
-          <Carousel.Item>
-            <div style={{
-              height: '300px',
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundImage: "url('https://a0.muscache.com/im/pictures/17588525/94250ea3_original.jpg?aki_policy=x_large')"
-            }}/>
-          </Carousel.Item>
-          <Carousel.Item>
-            <div style={{
-              height: '300px',
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundImage: "url('https://a0.muscache.com/im/pictures/75756707/5d76182c_original.jpg?aki_policy=x_large')"
-            }}/>
-          </Carousel.Item>
-          <Carousel.Item>
-            <div style={{
-              height: '300px',
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundImage: "url('https://a0.muscache.com/im/pictures/10833886/1edf8559_original.jpg?aki_policy=x_large')"
-            }}/>
-          </Carousel.Item>
+          {this.generateCarouselItems()}
         </Carousel>
         <div className="stay-container">
           <div className="sidebar">SIDEBAR</div>
           <div className="main">
             <Tabs defaultActiveKey={1}>
               <Tab eventKey={1} title="Overview">
-                <h2>The best position in Hvar!</h2>
-                <div className="box-support">
-                  <p className="text-muted">Hvar, Dalmatia, Croatia</p>
-                  <div className="stars">
-                    {[
-                      <Glyphicon glyph="star"/>,
-                      <Glyphicon glyph="star"/>,
-                      <Glyphicon glyph="star"/>,
-                      <Glyphicon glyph="star"/>,
-                      <Glyphicon glyph="star-empty"/>
-                    ]}
-                  </div>
-                  <p>210 reviews</p>
-                </div>
-                <div className="amenities">
-                  <div>
-                    <i className="fa fa-home"/>
-                    <span className="text-muted">Entire Home/Apt</span>
-                  </div>
-                  <div>
-                    <i className="fa fa-users"/>
-                    <span className="text-muted">4 Guests</span>
-                  </div>
-                  <div>
-                    <i className="fa fa-bed"/>
-                    <span className="text-muted">2 Beds</span>
-                  </div>
-                </div>
-                <h3>About this listing</h3>
-                <p>Apartment situated below the fortress Spanjola with the central position and view on the beautiful Hvar harbour and Pakleni islands.</p>
-                <a href="#">Contact Host</a>
-                <div className="info">
-                  <div>
-                    <strong>The space</strong>
-                    <div>
-                      Accomodates: 4<br/>
-                      Bathrooms: 1<br/>
-                      Bedrooms: 2<br/>
-                      Beds: 2<br/>
-                      <a href="#">House Rules</a>
-                    </div>
-                    <div>
-                      Check In: Anytime after 1PM<br/>
-                      Check Out: 11AM<br/>
-                      Property type: Apartment<br/>
-                      Room type: Entire home/apt<br/>
-                    </div>
-                  </div>
-                  <div>
-                    <strong>Amenities</strong>
-                    <div>
-                      <i className="fa fa-cutlery"/>
-                      <span>Kitchen</span>
-                      <br/>
-                      <i className="fa fa-wifi"/>
-                      <span>Wireless Internet</span>
-                      <br/>
-                      <a href="#">+ More</a>
-                    </div>
-                    <div>
-                      <i className="fa fa-snowflake-o"/>
-                      <span>Air Conditioning</span>
-                      <br/>
-                      <i className="fa fa-television"/>
-                      <span>TV</span>
-                    </div>
-                  </div>
-                  <div>
-                    <strong>Prices</strong>
-                    <div className="fuller"><span>Extra People: No Charge</span></div>
-                  </div>
-                  <div>
-                    <strong>Description</strong>
-                    <div className="fuller">
-                      <strong>The space</strong>
-                      <br/>
-                      <p>Our house is situated in the old part of the town Hvar, in a very peaceful area with beautiful sea view on the harbour and Pakleni Islands archipelago.</p>
-                      <p>It takes few minutes walking to get to the main square, markets, restaurants, as well as other town facilities.</p>
-                      <p>The distance from sea is 100m. You can reach the nearest beach in five minutes by foot and also taxi boats for beaches on Pakleni Islands.</p>
-                      <a href="#">+ More</a>
-                    </div>
-                  </div>
-                  <div>
-                    <strong>House Rules</strong>
-                    <div className="fuller">
-                      <p>Check in anytime after 1PM</p>
-                      <hr/>
-                      <p>Since it is a private house in a quiet part of town, we kindly ask not to make noise after midnight and during the night. It will create an enjoyable experience for all guests.</p>
-                    </div>
-                  </div>
-                  <div>
-                    <strong>Cancellations</strong>
-                    <div className="fuller">
-                      <strong>Strict</strong>
-                      <br/>
-                      <p>Cancel up to 7 days before your trip and get a 50% refund plus service fees back.</p>
-                      <a href="#">View Details</a>
-                    </div>
-                  </div>
-                  <div>
-                    <strong>Availability</strong>
-                    <div>The minimum night stay for this listing <strong>varies</strong>.</div>
-                    <div><a href="#">Add your travel dates</a> to see more details</div>
-                  </div>
-                </div>
+                { this.state.data && <Overview stay={this.state.stay} />}
               </Tab>
               <Tab eventKey={2} title="Reviews">
                 <div className="box-reviews">
@@ -295,5 +203,14 @@ class Stay extends React.Component {
     );
   }
 }
-
-export default Stay;
+function mapStateToProps(state){
+  return {
+    stay : state.stay
+  };
+}
+function mapDispatchToProps(dispatch){
+  return {
+    actions : bindActionCreators(staysActions, dispatch)
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Stay);

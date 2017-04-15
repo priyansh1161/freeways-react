@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { STAY_DETAILS_LOAD_SUCCESS, STAYS_LOAD_SUCCESS, STAY_LOCATION_LOAD_SUCCESS } from '../constants/actionTypes';
-import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { devBaseURI as baseURI } from '../constants/resources';
 
 function allStaysLoadSuccess(payload){
@@ -32,16 +32,21 @@ export function getLocations(){
       .then(({data}) => dispatch(stayLocationLoadSuccess(data)))
       .catch((err) => {
         throw err;
-      })
-  }
+      });
+  };
 }
 
 export function getStayDetails(id){
   return function(dispatch){
+    dispatch(showLoading());
     axios.get(`${baseURI}/api/stays/${id}`)
-      .then(({data}) => dispatch(stayDetailsLoadSuccess(data)))
-      .catch((err) => {
-        throw err;
+      .then(({data}) =>{
+        dispatch(hideLoading());
+        dispatch(stayDetailsLoadSuccess(data));
       })
-  }
+      .catch((err) => {
+        dispatch(hideLoading());
+        throw err;
+      });
+  };
 }
