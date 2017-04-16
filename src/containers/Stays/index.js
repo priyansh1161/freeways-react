@@ -38,7 +38,7 @@ class Stays extends React.Component {
     else {
       let state = this.state;
       this.props.actions.getAllStays(state.selectedLocation, state.startDate, state.endDate,state.rooms);
-
+      this.props.actions.setDatesAndRooms(this.state.startDate, this.state.endDate, this.state.rooms);
     }
   }
 

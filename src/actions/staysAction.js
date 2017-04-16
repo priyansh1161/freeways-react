@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { STAY_DETAILS_LOAD_SUCCESS, STAYS_LOAD_SUCCESS, STAY_LOCATION_LOAD_SUCCESS } from '../constants/actionTypes';
+import { STAY_DETAILS_LOAD_SUCCESS, STAYS_LOAD_SUCCESS, STAY_LOCATION_LOAD_SUCCESS, STAY_SELECT_SUCCESS } from '../constants/actionTypes';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { devBaseURI as baseURI } from '../constants/resources';
 
@@ -33,6 +33,15 @@ export function getLocations(){
       .catch((err) => {
         throw err;
       });
+  };
+}
+
+export function setDatesAndRooms (startDate, endDate, rooms){
+  return { type : STAY_SELECT_SUCCESS, payload : {
+    startDate,
+    endDate,
+    rooms
+  }
   };
 }
 

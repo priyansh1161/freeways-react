@@ -10,6 +10,7 @@ import BikeLocations from './bikeLocationsReducer';
 import selectedLocation from './bikeLocationSelectReducer';
 import staysLocations from './stayLocationReducer';
 import stay from './stayReducer';
+import selectedStayDetails from './selectedStayDetailsReducer';
 export default combineReducers({
   bikes,
   cart,
@@ -19,6 +20,7 @@ export default combineReducers({
   BikeLocations,
   staysLocations,
   selectedLocation,
+  selectedStayDetails,
   routing: routerReducer,
   loadingBar : loadingBarReducer,
 });

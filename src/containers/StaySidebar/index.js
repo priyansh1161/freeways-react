@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-
+import moment from 'moment';
 import ModalPrimary from '../../modules/ModalPrimary';
 import './styles.scss';
 
@@ -7,9 +7,9 @@ class StaySidebar extends React.Component {
   render() {
     return (
       <div className="sidebar">
-        <h4 className="price text-center">₹ 2,391 <small>per night</small></h4>
-        <p><strong>Check in date:</strong> {this.props.startDate}</p>
-        <p><strong>Check out date:</strong> {this.props.endDate}</p>
+        <h4 className="price text-center">₹ { this.props.price } <small>per night</small></h4>
+        <p><strong>Check in date:</strong> {moment(this.props.startDate).format('DD-MM-YY')}</p>
+        <p><strong>Check out date:</strong> {moment(this.props.startDate).format('DD-MM-YY')}</p>
         <p><strong>Rooms:</strong> {this.props.rooms}</p>
         <ModalPrimary
           bsClass="btn btn-danger btn-block"
@@ -34,7 +34,8 @@ class StaySidebar extends React.Component {
 StaySidebar.propTypes = {
   startDate: PropTypes.string,
   endDate: PropTypes.string,
-  rooms: PropTypes.integer
+  rooms: PropTypes.integer,
+  price : PropTypes.number
 };
 
 export default StaySidebar;

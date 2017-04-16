@@ -50,7 +50,11 @@ class Stay extends React.Component {
           {this.generateCarouselItems()}
         </Carousel>
         <div className="stay-container">
-          <StaySidebar startDate="22-09-2017" endDate="29-09-1998" rooms={3}/>
+          <StaySidebar startDate={this.props.selectedStayDetails.startDate}
+                       endDate={this.props.selectedStayDetails.endDate}
+                       rooms={this.props.selectedStayDetails.rooms}
+                       price={this.state.stay.price}
+          />
           <div className="main">
             <Tabs defaultActiveKey={1}>
               <Tab eventKey={1} title="Overview">
@@ -217,7 +221,8 @@ class Stay extends React.Component {
 }
 function mapStateToProps(state){
   return {
-    stay : state.stay
+    stay : state.stay,
+    selectedStayDetails : state.selectedStayDetails
   };
 }
 function mapDispatchToProps(dispatch){

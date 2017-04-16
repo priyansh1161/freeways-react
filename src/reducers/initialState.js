@@ -13,8 +13,7 @@ export default {
       rules : ''
     },
     facilities : [],
-    location : {
-
-    }
-  }
+    location : {}
+  },
+  selectedStayDetails : {}
 };
