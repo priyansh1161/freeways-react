@@ -1,0 +1,37 @@
+.box-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+  }
+  .box-register {
+      border-left: 1px solid gainsboro;
+  }
+}
+
+.box-auth {
+  display: flex;
+  flex-direction: column;
+  padding: 150px;
+}
+
+.fa-google {
+  padding-right: 10px;
+  border-right: 1px solid white;
+  margin-right: 10px;
+}
+
+input, input:active {
+  box-shadow: none !important;
+  padding: 5px !important;
+  border: 1px solid gainsboro !important;
+}
+
+.box-auth {
+  .btn {
+    margin-left: -0.5px;
+  }
+}

@@ -33,6 +33,11 @@
     }
     & > .sidebar {
       width: 20%;
+      min-width: 297px;
+      & > * {
+        width: 100%;
+        margin: 5px 0;
+      }
     }
   }
 }
@@ -63,6 +68,12 @@
 
 .sidebar {
   border-left: 1px solid gainsboro;
+  & > .price {
+    background-color: #4F5152;
+    color: white;
+    margin: 0;
+    padding: 12px;
+  }
 }
 
 .main {
@@ -137,13 +148,16 @@ table {
   }
 }
 
-.btn {
-  padding-right: 5px !important;
-  & > .border-right {
-    border-right: 1px solid white;
-  }
-  & > span {
-    padding: 10px;
+
+.review {
+  .btn {
+    padding-right: 5px !important;
+    & > .border-right {
+      border-right: 1px solid white;
+    }
+    & > span {
+      padding: 10px;
+    }
   }
 }
 
@@ -152,4 +166,20 @@ table {
   padding-bottom: 20px;
   padding-top: 20px;
   padding-right: 10px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.main .larger {
+  font-size: 1.3em;
+  .label-warning, .fa-check {
+    font-size: 1.3em;
+  }
+  .fa-check {
+    margin-left: 20px;
+  }
 }
