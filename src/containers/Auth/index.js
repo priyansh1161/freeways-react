@@ -5,6 +5,12 @@ import { bindActionCreators } from 'redux';
 import 'bootstrap-social/bootstrap-social.css';
 import './styles.scss';
 
+import 'animate.css/animate.css';
+import 'toastr/build/toastr.css';
+
+import {ToastContainer, ToastMessage} from 'react-toastr';
+const ToastMessageFactory = React.createFactory(ToastMessage.animation);
+
 class Auth extends React.Component {
   constructor(props, context){
     super(props, context);
@@ -20,22 +26,28 @@ class Auth extends React.Component {
     this.signUp = this.signUp.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+  componentWillReceiveProps ({auth}){
+    if(auth._id){
+      // user is logged in
+      this.context.router.push('/');
+    }
+  }
+  showErrorMessage(e, t) {
+    this.refs.container.error(
+      e, t, {
+      timeOut: 30000,
+      extendedTimeOut: 10000
+    });
+  }
   logIn(e){
     e.preventDefault();
     try {
       this.props.actions.localLogIn(this.state.lEmail, this.state.lPassword);
     }
     catch (e){
-      // todo toast
-      console.log(e);
+      this.showErrorMessage(e, "");
     }
     //todo add redirect
-  }
-  componentWillReceiveProps ({auth}){
-    if(auth._id){
-      // user is logged in
-      this.context.router.goBack();
-    }
   }
   signUp(e){
     e.preventDefault();
@@ -47,7 +59,7 @@ class Auth extends React.Component {
     }
     catch (e){
       // todo toast
-      console.log(e);
+      this.showErrorMessage(e, "");
     }
     // todo add redirect
   }
@@ -62,13 +74,11 @@ class Auth extends React.Component {
   render() {
     return (
       <div className="box-auth">
+        <ToastContainer ref="container"
+                        toastMessageFactory={ToastMessageFactory}
+                        className="toast-top-right" />
         <div className="box-inner">
-          <form  onSubmit={this.logIn}>
-            <div className="login form-group">
-              {/*<a className="btn btn-block btn-social btn-google">
-               <span className="fa fa-google"></span>
-               Sign in with Google
-               </a>*/}
+          <form  onSubmit={this.logIn} className="login">
               <input type="email"
                      value={this.state.lEmail}
                      placeholder="Email"
@@ -84,20 +94,18 @@ class Auth extends React.Component {
               <button className="btn btn-block btn-danger" type="submit">Login</button>
               <div className="text-center text-muted">OR</div>
               <button className="btn btn-block btn-danger">
-                <i className="fa fa-google"></i>
+                <i className="fa fa-google"/>
                 Sign in with Google
               </button>
-            </div>
           </form>
-          <form action="" onSubmit={this.signUp}>
-            <div className="box-register">
-              <input type="email"
-                     value={this.state.sEmail}
-                     placeholder="Email"
-                     name="sEmail"
-                     onChange={this.handleInputChange}
-              />
-              <input type="text"
+          <form action="" onSubmit={this.signUp} className="box-register">
+            <input type="email"
+                   value={this.state.sEmail}
+                   placeholder="Email"
+                   name="sEmail"
+                   onChange={this.handleInputChange}
+            />
+            <input type="text"
                      value={this.state.sUserName}
                      placeholder="Username"
                      name="sUserName"
@@ -116,7 +124,6 @@ class Auth extends React.Component {
                      {/*onChange={this.handleInputChange}*/}
               {/*/>*/}
               <button className="btn btn-block btn-danger" type="submit" onClick={this.signUp}>Register</button>
-            </div>
           </form>
 
         </div>
