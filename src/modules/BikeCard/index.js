@@ -1,8 +1,16 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+
+import 'animate.css/animate.css';
+import 'toastr/build/toastr.css';
+
 import * as cartActions from '../../actions/cartAction';
 import './styles.css';
+
+import ReactToastr from 'react-toastr';
+const {ToastContainer} = ReactToastr; // This is a React Element.
+const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
 
 class BikeCard extends React.Component {
   constructor(props){
@@ -10,9 +18,9 @@ class BikeCard extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.state = {
       count : '+'
-    }
+    };
   }
-  addToCart(){
+  addToCardAndDisplayMessage() {
     let props = this.props;
     this.props.actions.addToCart({
       id : props.id,
@@ -23,14 +31,41 @@ class BikeCard extends React.Component {
       vendor : props.vendor._id,
       qty : 1
     });
-    if(this.state.count === '+')
+    this.addSuccessAlert();
+  }
+  addToCart(){
+    if(this.state.count === '+') {
       this.setState({count : 1 });
-    else if (this.state.count < 2)
-      this.setState({count : this.state.count + 1})
+      this.addToCardAndDisplayMessage();
+    } else if (this.state.count < 2) {
+      this.setState({count : this.state.count + 1});
+      this.addToCardAndDisplayMessage();
+    } else {
+      this.addErrorAlert();
+    }
+  }
+  addSuccessAlert () {
+    this.refs.container.success(
+      "Bike added successfully to cart",
+      "Success", {
+      timeOut: 30000,
+      extendedTimeOut: 10000
+    });
+  }
+  addErrorAlert () {
+    this.refs.container.error(
+      "You cannot add more than 2 bikes of the same kind",
+      "There was an error", {
+      timeOut: 30000,
+      extendedTimeOut: 10000
+    });
   }
   render (){
     return (
       <div className="card">
+        <ToastContainer ref="container"
+                        toastMessageFactory={ToastMessageFactory}
+                        className="toast-top-right" />
         <img src={this.props.imageURL} className="img-responsive"/>
         <div className="card-info">
           <button className="btn-add" onClick={this.addToCart} >{this.state.count}</button>
@@ -39,7 +74,7 @@ class BikeCard extends React.Component {
           <h6 className="text-muted text-center">{this.props.mileage} Km/L</h6>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -51,13 +86,14 @@ BikeCard.propTypes = {
   imageURL: PropTypes.string,
   vendor: PropTypes.object,
   id : PropTypes.string,
-  location : PropTypes.string
+  location : PropTypes.string,
+  actions: PropTypes.object
 };
 
 function mapDispatchToProps(dispatch){
   return {
     actions : bindActionCreators(cartActions, dispatch)
-  }
+  };
 }
 
 export default connect(null, mapDispatchToProps)(BikeCard);
