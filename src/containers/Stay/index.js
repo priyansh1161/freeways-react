@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as staysActions from '../../actions/staysAction';
 import { Carousel, Tabs, Tab, Glyphicon } from 'react-bootstrap';
-import { DateRangePicker } from 'react-dates';
 
+import StaySidebar from '../StaySidebar';
 import Overview from './Overview';
 import './styles.scss';
 import 'font-awesome/css/font-awesome.css';
@@ -50,13 +50,7 @@ class Stay extends React.Component {
           {this.generateCarouselItems()}
         </Carousel>
         <div className="stay-container">
-          <div className="sidebar">
-            <h4 className="price text-center">₹ 2,391 <small>per night</small></h4>
-            <DateRangePicker/>
-            <input type="number" placeholder="Guests"/>
-            <button className="btn btn-danger">Request To Book</button>
-            <p className="text-muted text-center">You won't be charged yet</p>
-          </div>
+          <StaySidebar startDate="22-09-2017" endDate="29-09-1998" rooms={3}/>
           <div className="main">
             <Tabs defaultActiveKey={1}>
               <Tab eventKey={1} title="Overview">

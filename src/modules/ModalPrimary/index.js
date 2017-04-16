@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import { Button, Modal } from 'react-bootstrap';
 
@@ -39,5 +39,13 @@ class ModalPrimary extends React.Component {
     );
   }
 }
+
+ModalPrimary.propTypes = {
+  bsClass: PropTypes.string,
+  btnText: PropTypes.element,
+  title: PropTypes.string,
+  children: PropTypes.element,
+  footer: PropTypes.element
+};
 
 export default ModalPrimary;
