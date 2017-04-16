@@ -6,7 +6,7 @@ function logInSuccess(payload){
   return {type : LOG_IN_SUCCESS, payload};
 }
  function logInFailure(payload){
-  return {type : LOG_IN_FAILURE, payload }
+  return {type : LOG_IN_FAILURE, payload };
 }
 
 export function localLogIn(email, password){
@@ -25,26 +25,27 @@ export function localLogIn(email, password){
       })
       .catch((err) => {
         dispatch(hideLoading());
-        throw(err)
+        throw(err);
       });
-  }
+  };
 }
 export function localSignUp(email, name, password) {
   return function(dispatch) {
     dispatch(showLoading());
     axios.post(`${baseURI}/auth/signup`,{email, username : name, password})
-      .then((info) => {
+      .then(({data}) => {
         dispatch(hideLoading());
-        if(info.success){
-          dispatch(logInSuccess(info.user));
+        if(data.success){
+          dispatch(logInSuccess(data.user));
         }
         else {
-          throw new Error(info.message);
+          throw new Error(data.message);
         }
       })
       .catch((err) => {
         dispatch(hideLoading());
+        console.log(err,'gcv');
         throw(err);
-      })
-  }
+      });
+  };
 }

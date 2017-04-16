@@ -20,7 +20,7 @@ class BikeCard extends React.Component {
       location : props.location,
       model : props.model,
       price : props.price,
-      vendors : props.vendors,
+      vendor : props.vendor._id,
       qty : 1
     });
     if(this.state.count === '+')
@@ -49,7 +49,7 @@ BikeCard.propTypes = {
   mileage: PropTypes.number,
   price: PropTypes.number,
   imageURL: PropTypes.string,
-  vendors: PropTypes.object,
+  vendor: PropTypes.object,
   id : PropTypes.string,
   location : PropTypes.string
 };

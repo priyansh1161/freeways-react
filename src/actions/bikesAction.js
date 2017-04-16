@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {BIKE_LOAD_SUCCESS, LOCATIONS_LOAD_SUCCESS, SELECTED_LOCATION_CHANGE } from '../constants/actionTypes';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import { prodBaseURI as baseURI } from '../constants/resources';
+import { devBaseURI as baseURI } from '../constants/resources';
 function bikesLoadSuccess(payload) {
   return { type : BIKE_LOAD_SUCCESS , payload };
 }

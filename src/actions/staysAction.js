@@ -23,8 +23,8 @@ export function getAllStays(city, startDate, endDate,rooms, limit, offset) {
       .catch((err) => {
         dispatch(hideLoading());
         throw err;
-      })
-  }
+      });
+  };
 }
 export function getLocations(){
   return function(dispatch){

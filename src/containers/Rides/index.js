@@ -110,7 +110,10 @@ class Rides extends React.Component {
           <div className="row">
             { Object.keys(this.state.bikes).length ? this.generateCards() : <NothingToShow />}
           </div>
-          <Cart />
+          <Cart location={this.state.selectedLocation}
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+          />
         </div>
       </div>
     )
