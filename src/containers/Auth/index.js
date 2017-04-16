@@ -34,7 +34,7 @@ class Auth extends React.Component {
   componentWillReceiveProps ({auth}){
     if(auth._id){
       // user is logged in
-      this.context.router.push('/');
+      this.context.router.goBack();
     }
   }
   signUp(e){
