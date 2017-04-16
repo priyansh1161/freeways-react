@@ -8,18 +8,18 @@ function addBikeToCart(payload) {
 export function addToCart(newBike) {
   return function (dispatch) {
     dispatch(addBikeToCart(newBike));
-  }
+  };
 }
 export function removeFromCart(toRemove){
   return function (dispatch) {
     dispatch({ type : REMOVE_FROM_CART, payload : toRemove });
-  }
+  };
 }
 function checkoutSuccess(payload){
-  return {type : CHECKOUT_SUCCESS, payload }
+  return {type : CHECKOUT_SUCCESS, payload };
 }
 function checkoutFailure(payload) {
-  return { type : CHECKOUT_FAILURE, payload }
+  return { type : CHECKOUT_FAILURE, payload };
 }
 export function checkOut(location, userId, startDate, endDate, items){
   // only call it when user is verified
@@ -41,7 +41,7 @@ export function checkOut(location, userId, startDate, endDate, items){
       .catch((err)=>{
         dispatch(hideLoading());
         throw err;
-      })
-  }
+      });
+  };
 
 }
