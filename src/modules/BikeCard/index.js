@@ -8,9 +8,9 @@ import 'toastr/build/toastr.css';
 import * as cartActions from '../../actions/cartAction';
 import './styles.css';
 
-var ReactToastr = require("react-toastr");
-var {ToastContainer} = ReactToastr; // This is a React Element.
-var ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
+import ReactToastr from 'react-toastr';
+const {ToastContainer} = ReactToastr; // This is a React Element.
+const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
 
 class BikeCard extends React.Component {
   constructor(props){
