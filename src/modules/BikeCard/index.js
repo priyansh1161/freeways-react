@@ -9,7 +9,7 @@ import * as cartActions from '../../actions/cartAction';
 import './styles.css';
 
 import ReactToastr from 'react-toastr';
-const {ToastContainer} = ReactToastr; // This is a React Element.
+const {ToastContainer} = ReactToastr;
 const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
 
 class BikeCard extends React.Component {
