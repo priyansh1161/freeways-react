@@ -8,9 +8,8 @@ import './styles.scss';
 import 'animate.css/animate.css';
 import 'toastr/build/toastr.css';
 
-import ReactToastr from 'react-toastr';
-const {ToastContainer} = ReactToastr;
-const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
+import {ToastContainer, ToastMessage} from 'react-toastr';
+const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 
 class Auth extends React.Component {
   constructor(props, context){
@@ -79,12 +78,7 @@ class Auth extends React.Component {
                         toastMessageFactory={ToastMessageFactory}
                         className="toast-top-right" />
         <div className="box-inner">
-          <form  onSubmit={this.logIn}>
-            <div className="login form-group">
-              {/*<a className="btn btn-block btn-social btn-google">
-               <span className="fa fa-google"></span>
-               Sign in with Google
-               </a>*/}
+          <form  onSubmit={this.logIn} className="login">
               <input type="email"
                      value={this.state.lEmail}
                      placeholder="Email"
@@ -103,17 +97,15 @@ class Auth extends React.Component {
                 <i className="fa fa-google"/>
                 Sign in with Google
               </button>
-            </div>
           </form>
-          <form action="" onSubmit={this.signUp}>
-            <div className="box-register">
-              <input type="email"
-                     value={this.state.sEmail}
-                     placeholder="Email"
-                     name="sEmail"
-                     onChange={this.handleInputChange}
-              />
-              <input type="text"
+          <form action="" onSubmit={this.signUp} className="box-register">
+            <input type="email"
+                   value={this.state.sEmail}
+                   placeholder="Email"
+                   name="sEmail"
+                   onChange={this.handleInputChange}
+            />
+            <input type="text"
                      value={this.state.sUserName}
                      placeholder="Username"
                      name="sUserName"
@@ -132,7 +124,6 @@ class Auth extends React.Component {
                      {/*onChange={this.handleInputChange}*/}
               {/*/>*/}
               <button className="btn btn-block btn-danger" type="submit" onClick={this.signUp}>Register</button>
-            </div>
           </form>
 
         </div>
