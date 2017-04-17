@@ -5,11 +5,6 @@ import { bindActionCreators } from 'redux';
 import 'bootstrap-social/bootstrap-social.css';
 import './styles.scss';
 
-import 'animate.css/animate.css';
-import 'toastr/build/toastr.css';
-
-import {ToastContainer, ToastMessage} from 'react-toastr';
-const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 
 class Auth extends React.Component {
   constructor(props, context){
@@ -32,38 +27,17 @@ class Auth extends React.Component {
       this.context.router.goBack();
     }
   }
-  showErrorMessage(e, t) {
-    this.refs.container.error(
-      e, t, {
-      timeOut: 30000,
-      extendedTimeOut: 10000
-    });
-  }
+
   logIn(e){
     e.preventDefault();
-    try {
       this.props.actions.localLogIn(this.state.lEmail, this.state.lPassword);
-    }
-    catch (e){
-      console.log(e);
-      this.showErrorMessage(e.message, "");
-    }
-    //todo add redirect
   }
   signUp(e){
     e.preventDefault();
-    try {
       this.props.actions.localSignUp(
         this.state.sEmail,
         this.state.sUserName,
         this.state.sPassword);
-    }
-    catch (e){
-      // todo toast
-      console.log(e,'ere',e.message);
-      this.showErrorMessage(e, "");
-    }
-    // todo add redirect
   }
   handleInputChange(event) {
     const target = event.target;
@@ -76,9 +50,6 @@ class Auth extends React.Component {
   render() {
     return (
       <div className="box-auth">
-        <ToastContainer ref="container"
-                        toastMessageFactory={ToastMessageFactory}
-                        className="toast-top-right" />
         <div className="box-inner">
           <form  onSubmit={this.logIn} className="login">
               <input type="email"

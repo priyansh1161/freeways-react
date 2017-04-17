@@ -78,7 +78,7 @@ class Rides extends React.Component {
                     vendor={vendor}
           />
         </div>
-      )
+      );
     }
     return toReturn;
   }

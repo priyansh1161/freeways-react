@@ -24,7 +24,7 @@ export default function cartReducer( state = initialState.cart, action ){
           newState[i].qty--;
       }
     }
-    return newState
+    return newState;
   }
 
   return state;

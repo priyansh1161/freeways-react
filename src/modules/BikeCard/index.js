@@ -47,8 +47,8 @@ class BikeCard extends React.Component {
     this.refs.container.success(
       "Bike added successfully to cart",
       "Success", {
-      timeOut: 30000,
-      extendedTimeOut: 10000
+      timeOut: 3000,
+      extendedTimeOut: 1000
     });
   }
   addErrorAlert () {
