@@ -29,7 +29,7 @@ class Auth extends React.Component {
   componentWillReceiveProps ({auth}){
     if(auth._id){
       // user is logged in
-      this.context.router.push('/');
+      this.context.router.goBack();
     }
   }
   showErrorMessage(e, t) {
@@ -45,7 +45,8 @@ class Auth extends React.Component {
       this.props.actions.localLogIn(this.state.lEmail, this.state.lPassword);
     }
     catch (e){
-      this.showErrorMessage(e, "");
+      console.log(e);
+      this.showErrorMessage(e.message, "");
     }
     //todo add redirect
   }
@@ -59,6 +60,7 @@ class Auth extends React.Component {
     }
     catch (e){
       // todo toast
+      console.log(e,'ere',e.message);
       this.showErrorMessage(e, "");
     }
     // todo add redirect

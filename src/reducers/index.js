@@ -11,12 +11,16 @@ import selectedLocation from './bikeLocationSelectReducer';
 import staysLocations from './stayLocationReducer';
 import stay from './stayReducer';
 import selectedStayDetails from './selectedStayDetailsReducer';
+import checkout from './checkoutReducer';
+import error from './errorHandler';
 export default combineReducers({
+  error,
   bikes,
   cart,
   auth,
   stays,
   stay,
+  checkout,
   BikeLocations,
   staysLocations,
   selectedLocation,

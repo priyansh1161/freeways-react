@@ -1,9 +1,13 @@
 import React, {PropTypes} from 'react';
 import moment from 'moment';
+// import * as staysAction from ''
 import ModalPrimary from '../../modules/ModalPrimary';
 import './styles.scss';
 
 class StaySidebar extends React.Component {
+  constructor(props, context){
+    super(props, context);
+  }
   render() {
     return (
       <div className="sidebar">
@@ -30,7 +34,9 @@ class StaySidebar extends React.Component {
     );
   }
 }
-
+StaySidebar.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 StaySidebar.propTypes = {
   startDate: PropTypes.string,
   endDate: PropTypes.string,

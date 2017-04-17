@@ -15,5 +15,7 @@ export default {
     facilities : [],
     location : {}
   },
-  selectedStayDetails : {}
+  selectedStayDetails : {},
+  stayCheckout : {},
+  error : null
 };

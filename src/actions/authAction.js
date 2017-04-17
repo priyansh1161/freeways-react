@@ -1,6 +1,6 @@
 import {LOG_IN_SUCCESS, LOG_IN_FAILURE} from '../constants/actionTypes';
 import {devBaseURI as baseURI} from '../constants/resources';
-import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import axios from 'axios';
 function logInSuccess(payload){
   return {type : LOG_IN_SUCCESS, payload};
@@ -13,19 +13,20 @@ export function localLogIn(email, password){
   return function (dispatch){
     dispatch(showLoading());
     axios.post(`${baseURI}/auth/login`,{email,password})
-      .then((info) => {
+      .then(({data}) => {
         dispatch(hideLoading());
-        if(info.success){
-          dispatch(logInSuccess(info.user));
+        if(data.success){
+          dispatch(logInSuccess(data.user));
         }
         else {
-          // dispatch(logInFailure(info));
-          throw new Error(info.message);
+          dispatch(hideLoading());
+          dispatch(logInFailure(data.message || 'Wrong Email id or Password'));
+          // throw new Error(data.message);
         }
       })
       .catch((err) => {
         dispatch(hideLoading());
-        throw(err);
+        dispatch(logInFailure(err.message || 'Wrong Email id or Password'));
       });
   };
 }
@@ -39,13 +40,12 @@ export function localSignUp(email, name, password) {
           dispatch(logInSuccess(data.user));
         }
         else {
-          throw new Error(data.message);
+          dispatch(logInFailure(data.message || 'Something Went Wrong..'));
         }
       })
       .catch((err) => {
         dispatch(hideLoading());
-        console.log(err,'gcv');
-        throw(err);
+        dispatch(logInFailure(err.message || 'Something Went Wrong'));
       });
   };
 }

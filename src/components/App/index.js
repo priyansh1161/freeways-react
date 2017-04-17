@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 
 import Navbar from '../../partials/Navbar';
 import Footer from '../../partials/Footer';
+import GlobalErrors from '../../containers/GlobalErrors';
 import LoadingBar from 'react-redux-loading-bar';
 
 import './styles.css';
@@ -16,6 +17,7 @@ class App extends React.Component {
         <LoadingBar style={{zIndex: 3}}/>
         <div className="app">
           <Navbar/>
+          <GlobalErrors/>
           <div className="container">{this.props.children}</div>
           <Footer/>
         </div>
