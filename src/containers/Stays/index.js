@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { DateRangePicker } from 'react-dates';
@@ -27,13 +27,13 @@ class Stays extends React.Component {
   }
 
   componentWillReceiveProps({stays, locations}){
-    console.log(stays,locations);
+    // console.log(stays,locations);
     this.setState({ stays, locations, selectedLocation : locations[0] });
   }
 
   submit(){
     if(!this.state.startDate || !this.state.endDate){
-      // send some toast to select dates;
+      // TODO: send some toast to select dates;
     }
     else {
       let state = this.state;
@@ -44,20 +44,25 @@ class Stays extends React.Component {
 
   generateCards(){
     return this.state.stays.map(curr => {
-      return <StayCard title={curr.name}
-                       specification={curr.stayType}
-                       stars={curr.stars}
-                       price={curr.price}
-                       key={curr._id}
-                       id={curr._id}
-                       imageURL={curr.photos[0]}
-      />;
+      return (
+        <StayCard title={curr.name}
+                  specification={curr.stayType}
+                  stars={curr.stars}
+                  price={curr.price}
+                  key={curr._id}
+                  id={curr._id}
+                  imageURL={curr.photos[0]}
+        />
+      );
     });
 
   }
   selectLocation(e){
     this.setState({ selectedLocation : e.target.value});
     // this.props.actions.selectStaysLocation(e.target.value);
+  }
+  setRooms(e) {
+    this.setState({ rooms: e.target.value });
   }
 
   render() {
@@ -77,6 +82,7 @@ class Stays extends React.Component {
             onFocusChange={focusedInput => this.setState({ focusedInput })}
             withFullScreenPortal={smallDevice}
             orientation={orientation}/>
+          <input type="number" value={this.state.rooms} onChange={this.setRooms.bind(this)}/>
           <button className="btn btn-primary btn-place" onClick={this.submit}>Search</button>
         </div>
         <div className="container-fluid">
@@ -89,6 +95,10 @@ class Stays extends React.Component {
   }
 }
 
+Stays.propTypes = {
+  actions: PropTypes.object
+};
+
 function mapStaysToProps(state){
   let locations = state.staysLocations.sort(function(a, b) {
     let locationA = a.toUpperCase();
@@ -98,7 +108,7 @@ function mapStaysToProps(state){
   return {
     locations,
     stays : state.stays
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch){
