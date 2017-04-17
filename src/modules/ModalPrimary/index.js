@@ -21,9 +21,15 @@ class ModalPrimary extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={this.open.bind(this)} bsClass={this.props.bsClass}>{this.props.btnText}</Button>
-        <Modal show={this.state.isOpen} onHide={this.close.bind(this)}>
-          <Modal.Header closeButton>
+        {
+          // TODO: Improve variable naming
+          !this.props.doesNotHaveButton && <Button onClick={this.open.bind(this)} bsClass={this.props.bsClass}>{this.props.btnText}</Button>
+        }
+        <Modal
+          show={this.props.doesNotHaveButton ? this.props.show: this.state.isOpen}
+          onHide={this.close.bind(this)}
+          backdrop={this.props.doesNotHaveButton ? 'static': true}>
+          <Modal.Header closeButton={!this.props.doesNotHaveButton}>
             <Modal.Title>
               <div className="text-center">{this.props.title}</div>
             </Modal.Title>

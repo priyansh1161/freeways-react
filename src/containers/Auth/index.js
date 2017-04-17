@@ -2,9 +2,9 @@ import React from 'react';
 import * as authActions from '../../actions/authAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import OTPModal from './OTPModal';
 import 'bootstrap-social/bootstrap-social.css';
 import './styles.scss';
-
 
 class Auth extends React.Component {
   constructor(props, context){
@@ -15,8 +15,9 @@ class Auth extends React.Component {
       sEmail : '',
       sPassword : '',
       sPhone  : '',
-      sUserName : ''
-      };
+      sUserName : '',
+      showOTPModal: false
+    };
     this.logIn = this.logIn.bind(this);
     this.signUp = this.signUp.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -24,7 +25,13 @@ class Auth extends React.Component {
   componentWillReceiveProps ({auth}){
     if(auth._id){
       // user is logged in
-      this.context.router.goBack();
+      if (!auth.verified) {
+        this.setState({
+          showOTPModal: true
+        });
+      } else {
+        this.context.router.goBack();
+      }
     }
   }
 
@@ -37,7 +44,8 @@ class Auth extends React.Component {
       this.props.actions.localSignUp(
         this.state.sEmail,
         this.state.sUserName,
-        this.state.sPassword);
+        this.state.sPassword
+      );
   }
   handleInputChange(event) {
     const target = event.target;
@@ -96,10 +104,14 @@ class Auth extends React.Component {
                      {/*name="sPhone"*/}
                      {/*onChange={this.handleInputChange}*/}
               {/*/>*/}
-              <button className="btn btn-block btn-danger" type="submit" onClick={this.signUp}>Register</button>
+              <button
+                className="btn btn-block btn-danger"
+                type="submit"
+                onClick={this.signUp}>Register</button>
           </form>
 
         </div>
+        <OTPModal show={this.state.showOTPModal}/>
       </div>
     );
   }
