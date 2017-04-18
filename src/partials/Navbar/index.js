@@ -20,7 +20,7 @@ const NavbarComponent = () => (
         <Nav pullRight>
           <NavItem eventKey={1}>About Us</NavItem>
           <NavItem eventKey={2}>Contact Us</NavItem>
-          <NavItem eventKey={3}>FAQ</NavItem>
+          <NavItem eventKey={3}>Sign Up</NavItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
