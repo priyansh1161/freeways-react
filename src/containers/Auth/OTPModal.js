@@ -5,7 +5,14 @@ class OTPModal extends React.Component {
   render() {
     return (
       <ModalPrimary doesNotHaveButton={true} show={this.props.show}>
-        <h1>Hello World</h1>
+        <form>
+          <input type="tel" placeholder="Phone Number"/>
+          <input type="submit" value="Send OTP" className="btn btn-danger"/>
+        </form>
+        <form>
+          <input type="number" placeholder="OTP"/>
+          <input type="submit" value="Submit OTP" className="btn btn-danger"/>
+        </form>
       </ModalPrimary>
     );
   }
