@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { Jumbotron, Grid, Row, Col, Panel } from 'react-bootstrap';
 
 import StayCard from '../../modules/StayCard';
+import BasicCard from '../../modules/BasicCard';
 
 import './styles.css';
 
@@ -21,15 +22,61 @@ const Dashboard = () => (
       <h3>Travelling To?</h3>
       <input type="text"/>
     </div>
-    <h2 className="text-center">Top cities to explore</h2>
-    <div className="cities">
-      {/* TODO: Loop over the array of cities and make cards */}
+    <h4>Top cities to explore</h4>
+    <div className="cities row">
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <BasicCard
+          title="Los Angeles"
+          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
+        />
+      </div>
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <BasicCard
+          title="Paris"
+          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
+        />
+      </div>
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <BasicCard
+          title="Tokyo"
+          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
+        />
+      </div>
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <BasicCard
+          title="London"
+          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
+        />
+      </div>
     </div>
-    <h2 className="text-center">Places in Delhi</h2>
-    <div className="places">
-      {/* TODO: Loop over array of places and make cards */}
+    <h4>Places in Delhi</h4>
+    <div className="places row">
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <BasicCard
+          title="Los Angeles"
+          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
+        />
+      </div>
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <BasicCard
+          title="Paris"
+          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
+        />
+      </div>
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <BasicCard
+          title="Tokyo"
+          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
+        />
+      </div>
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <BasicCard
+          title="London"
+          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
+        />
+      </div>
     </div>
-    <h2 className="text-center">Stays in Delhi</h2>
+    <h4>Stays in Delhi</h4>
     <div className="stays row">
       <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <StayCard

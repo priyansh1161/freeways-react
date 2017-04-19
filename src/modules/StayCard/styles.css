@@ -1,5 +1,5 @@
 .card:hover, .btn-add:hover {
-  box-shadow: 1px 1px 5px #DDD, -1px -1px 5px #DDD;
+  box-shadow: 0 1px 5px #DDD;
 }
 
 .stays .card {
