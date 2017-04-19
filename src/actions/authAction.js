@@ -1,4 +1,4 @@
-import {LOG_IN_SUCCESS, LOG_IN_FAILURE} from '../constants/actionTypes';
+import {LOG_IN_SUCCESS, LOG_IN_FAILURE, VERIFICATION_SUCCESS, VERIFICATION_FAILURE} from '../constants/actionTypes';
 import {devBaseURI as baseURI} from '../constants/resources';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import axios from 'axios';
@@ -48,4 +48,13 @@ export function localSignUp(email, name, password) {
         dispatch(logInFailure(err.message || 'Something Went Wrong'));
       });
   };
+}
+export function phoneVerification(status, msg) {
+    return status ? {
+      type : VERIFICATION_SUCCESS,
+      payload : true
+    } : {
+        type : VERIFICATION_FAILURE,
+        payload : msg || 'Failed to Verify your Phone number, please Try again'
+    };
 }

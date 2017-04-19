@@ -6,9 +6,17 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 function stayCheckout (payload){
   return {type : STAY_CHECKOUT_INIT, payload};
 }
-export function initCheckOut(userId, stayId, bookingType, startDate, endDate, largeAmount){
+function stayCheckOutFailure (payload){
+  return {type : STAY_CHECKOUT_FAILURE, payload };
+}
+export function initCheckOut(userId,
+                             startDate,
+                             endDate,
+                             largeAmount,
+                             stayId,
+                             bookingType){
   return function (dispatch) {
-    showLoading();
+    dispatch(showLoading());
     axios.post(`${baseURI}/txn`,{
       userId,
       startDate,
@@ -18,14 +26,13 @@ export function initCheckOut(userId, stayId, bookingType, startDate, endDate, la
       bookingType
     })
       .then(({data}) => {
-        hideLoading();
+        dispatch(hideLoading());
         console.log(data);
         dispatch(stayCheckout(data));
       })
       .catch((err) => {
-        hideLoading();
-        console.log(err);
-        throw err;
+        dispatch(hideLoading());
+        dispatch(stayCheckOutFailure(err.message));
       });
   };
 }
