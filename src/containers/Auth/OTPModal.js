@@ -35,14 +35,13 @@ class OTPModal extends React.Component {
         this.setState({msg : 'SomeThing Went Wrong, Please Try again'});
       });
   }
-  OTPVerification(){
+  OTPVerification(e){
     e.preventDefault();
-    axios.get(`${baseURI}/api/v1/checkotp/${this.state.otp}/${this.props.user.id}`)
+    axios.get(`${baseURI}/api/v1/checkotp/${this.state.otp}/${this.props.user._id}`)
       .then(({data}) => {
         if(data.success){
-          this.props.show = false;
           this.setState({msg : data.message});
-          this.props.actions.phoneVerification();
+          this.props.actions.phoneVerification(true);
         }
         else
           this.setState({msg : data.message});

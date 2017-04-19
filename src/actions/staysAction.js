@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { STAY_DETAILS_LOAD_SUCCESS, STAYS_LOAD_SUCCESS, STAY_LOCATION_LOAD_SUCCESS, STAY_SELECT_SUCCESS } from '../constants/actionTypes';
+import { STAY_DETAILS_LOAD_SUCCESS, STAYS_LOAD_SUCCESS, STAY_LOCATION_LOAD_SUCCESS, STAY_SELECT_SUCCESS, HOST_LOAD_SUCCESS, HOST_LOAD_FAILURE } from '../constants/actionTypes';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { devBaseURI as baseURI } from '../constants/resources';
 
@@ -58,4 +58,20 @@ export function getStayDetails(id){
         throw err;
       });
   };
+}
+
+export function getHostDetails(id) {
+  return function (dispatch) {
+    dispatch(showLoading());
+    axios.get(`${baseURI}/api/host/${id}`)
+      .then(({data}) => {
+        console.log(data);
+        dispatch(hideLoading());
+        dispatch({
+          type : HOST_LOAD_SUCCESS,
+          payload : data
+        });
+      })
+      .catch(err => dispatch({type : HOST_LOAD_FAILURE, payload : err.message}));
+  }
 }
