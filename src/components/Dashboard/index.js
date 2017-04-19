@@ -15,6 +15,45 @@ const Dashboard = () => (
       <Link to="/stays" className="btn btn-lg btn-primary">Places</Link>
       <Link to="/experiences" className="btn btn-lg btn-primary">Moments</Link>
     </Jumbotron>
+    <div className="travelling-to">
+      <h3>Travelling To?</h3>
+      <input type="text"/>
+    </div>
+    <h2 className="text-center">Top cities to explore</h2>
+    <div className="cities">
+      {/* TODO: Loop over the array of cities and make cards */}
+    </div>
+    <h2 className="text-center">Places in Delhi</h2>
+    <div className="places">
+      {/* TODO: Loop over array of places and make cards */}
+    </div>
+    <h2 className="text-center">Stays in Delhi</h2>
+    <div className="stays">
+      {/* TODO: Loop over array of stays and make cards */}
+    </div>
+    <div className="why-us">
+      <h3 className="text-center">Why Us?</h3>
+      <Grid>
+        <Row className="show-grid text-center">
+          <Col sm={4}>
+            <Panel>
+              <h4>Value for Money</h4>
+            </Panel>
+          </Col>
+          <Col sm={4}>
+            <Panel>
+              <h4>Live like a local</h4>
+            </Panel>
+          </Col>
+          <Col sm={4}>
+            <Panel>
+              <h4>24/7 customer support</h4>
+            </Panel>
+          </Col>
+        </Row>
+      </Grid>
+    </div>
+    <h3 className="text-center">Need Help?</h3>
     <Grid>
       <Row className="show-grid text-center">
         <Col sm={4}>
