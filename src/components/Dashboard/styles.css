@@ -7,3 +7,12 @@
   flex-direction: column;
   align-items: center;
 }
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.stays {
+  justify-content: space-around;
+}
