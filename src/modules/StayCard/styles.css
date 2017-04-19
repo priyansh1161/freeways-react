@@ -2,9 +2,16 @@
   box-shadow: 1px 1px 5px #DDD, -1px -1px 5px #DDD;
 }
 
-.card {
-  margin: 5px;
-  padding: 5px;
+.stays .card {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  img {
+    width: 100%;
+  }
+  .card-info {
+    padding: 15px;
+  }
 }
 
 .btn-add {
@@ -18,4 +25,8 @@
   position: absolute;
   right: 30px;
   bottom: 30px;
+}
+
+.stays a:hover {
+  text-decoration: none;
 }
