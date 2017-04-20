@@ -1,0 +1,12 @@
+.box-typeahead {
+  display: flex;
+  button {
+    position: relative;
+    top: -5px;
+    height: 100%;
+  }
+}
+
+.bootstrap-typeahead .dropdown-menu-justify {
+  right: 0;
+}

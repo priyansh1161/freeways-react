@@ -9,6 +9,9 @@ import Stays from './containers/Stays';
 import Stay from './containers/Stay';
 import Auth from './containers/Auth';
 import NotFoundPage from './components/NotFoundPage';
+import RegionComponent from './components/RegionComponent';
+import StateComponent from './components/StateComponent';
+import CityComponent from './components/CityComponent';
 
 export default (
   <Route path="/" component={App}>
@@ -19,6 +22,9 @@ export default (
       <Route path=":id" component={Stay}/>
     </Route>
     <Route path="auth" component={Auth}/>
+    <Route path="region/:id" component={RegionComponent}/>
+    <Route path="region/:id" component={StateComponent}/>
+    <Route path="region/:id" component={CityComponent}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );

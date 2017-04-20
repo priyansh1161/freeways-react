@@ -4,6 +4,8 @@ import {Typeahead} from 'react-bootstrap-typeahead';
 
 import {devBaseURI as baseURI} from '../../constants/resources';
 
+import './styles.scss';
+
 class SearchBar extends React.Component {
   constructor(props, context){
     super(props, context);
@@ -18,15 +20,13 @@ class SearchBar extends React.Component {
     // todo don't use this use a async TypeHeader
     axios.get(`${baseURI}/api/places/loc`)
       .then(({data}) => {
-        console.log(data);
         let options = [];
         for(let type in data){
           data[type].forEach(curr => options.push({type, label : curr.name, key : curr._id}));
         }
-        console.log(options);
         this.setState({options});
     })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
   submit(){
     let selected = this.state.selected;
@@ -38,15 +38,17 @@ class SearchBar extends React.Component {
   }
   render(){
     return  (
-      <div>
+      <div className="box-typeahead">
         <Typeahead
+          bsSize="large"
           multiple={false}
-          options={this.state.options}
+          options={['Delhi', 'Noida', 'Gurugram']}
           placeholder="Travelling to ?"
           maxResults={2}
+          minLength={1}
           onChange={selectedItems => this.setState({selected : selectedItems[0]})}
         />
-        <button className="btn" onClick={this.submit}>Search</button>
+        <button className="btn btn-primary" onClick={this.submit}>Search</button>
       </div>
     );
   }
