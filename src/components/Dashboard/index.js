@@ -6,6 +6,7 @@ import { Jumbotron, Grid, Row, Col, Panel } from 'react-bootstrap';
 
 import StayCard from '../../modules/StayCard';
 import BasicCard from '../../modules/BasicCard';
+import SearchBar from '../SearchBar';
 
 import './styles.css';
 
@@ -20,7 +21,7 @@ const Dashboard = () => (
     </Jumbotron>
     <div className="travelling-to">
       <h3>Travelling To?</h3>
-      <input type="text"/>
+      <SearchBar />
     </div>
     <h4>Top cities to explore</h4>
     <div className="cities row">

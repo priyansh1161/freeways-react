@@ -1,8 +1,8 @@
-.card:hover, .btn-add:hover {
+.card-stay:hover, .btn-add:hover {
   box-shadow: 0 1px 5px #DDD;
 }
 
-.stays .card {
+.card-stay {
   margin: 0;
   padding: 0;
   position: relative;
@@ -27,6 +27,6 @@
   bottom: 30px;
 }
 
-.stays a:hover {
+ a.link-card-stay:hover {
   text-decoration: none;
 }

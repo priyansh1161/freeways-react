@@ -1,7 +1,6 @@
 import React from 'react';
-
-const Reviews = (reviews) => {
-  return (
+import { Glyphicon } from 'react-bootstrap';
+const Reviews = () => (
     <div>
       <div className="box-reviews">
         <h4>210 Reviews</h4>
@@ -143,6 +142,5 @@ const Reviews = (reviews) => {
       </div>
     </div>
   );
-}
 
 export default Reviews;

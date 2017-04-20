@@ -45,14 +45,16 @@ class Stays extends React.Component {
   generateCards(){
     return this.state.stays.map(curr => {
       return (
-        <StayCard title={curr.name}
-                  specification={curr.stayType}
-                  stars={curr.stars}
-                  price={curr.price}
-                  key={curr._id}
-                  id={curr._id}
-                  imageURL={curr.photos[0]}
-        />
+        <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <StayCard title={curr.name}
+                    specification={curr.stayType}
+                    stars={curr.stars}
+                    price={curr.price}
+                    key={curr._id}
+                    id={curr._id}
+                    imageURL={curr.photos[0]}
+          />
+        </div>
       );
     });
 

@@ -62,7 +62,7 @@ class Stay extends React.Component {
                 { this.state.data && <Overview stay={this.state.stay} />}
               </Tab>
               <Tab eventKey={2} title="Reviews">
-                <Reviews reviews={this.state.stay.reviews}/>
+                <Reviews />
               </Tab>
               {this.state.stay.hostId &&
               <Tab eventKey={3} title="The Host">
