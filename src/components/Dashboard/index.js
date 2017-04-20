@@ -2,8 +2,8 @@ import React from 'react';
 import { Grid, Row, Col, Panel } from 'react-bootstrap';
 
 import StayCard from '../../modules/StayCard';
-import BasicCard from '../../modules/BasicCard';
 import SearchBar from '../SearchBar';
+import ListCards from '../../containers/ListCards';
 
 import './styles.css';
 
@@ -14,59 +14,9 @@ const Dashboard = () => (
       <SearchBar/>
     </div>
     <h4>Top cities to explore</h4>
-    <div className="cities row">
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <BasicCard
-          title="Los Angeles"
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-        />
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <BasicCard
-          title="Paris"
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-        />
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <BasicCard
-          title="Tokyo"
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-        />
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <BasicCard
-          title="London"
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-        />
-      </div>
-    </div>
+    <ListCards className="cities"/>
     <h4>Places in Delhi</h4>
-    <div className="places row">
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <BasicCard
-          title="Los Angeles"
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-        />
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <BasicCard
-          title="Paris"
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-        />
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <BasicCard
-          title="Tokyo"
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-        />
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <BasicCard
-          title="London"
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-        />
-      </div>
-    </div>
+    <ListCards className="places"/>
     <h4>Stays in Delhi</h4>
     <div className="stays row">
       <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
