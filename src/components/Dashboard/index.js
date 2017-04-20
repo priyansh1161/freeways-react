@@ -1,8 +1,5 @@
 import React from 'react';
-
-import { Link } from 'react-router';
-
-import { Jumbotron, Grid, Row, Col, Panel } from 'react-bootstrap';
+import { Grid, Row, Col, Panel } from 'react-bootstrap';
 
 import StayCard from '../../modules/StayCard';
 import BasicCard from '../../modules/BasicCard';
@@ -12,16 +9,9 @@ import './styles.css';
 
 const Dashboard = () => (
   <div className="dashboard container">
-    <Jumbotron className="text-center">
-      <h1>COLLECT MOMENTS, NOT THINGS</h1>
-      <p>Get bikes and places on rent, hassle-free.</p>
-      <Link to="/rides" className="btn btn-lg btn-primary">Bikes</Link>
-      <Link to="/stays" className="btn btn-lg btn-primary">Places</Link>
-      <Link to="/experiences" className="btn btn-lg btn-primary">Moments</Link>
-    </Jumbotron>
     <div className="travelling-to">
       <h3>Travelling To?</h3>
-      <SearchBar />
+      <SearchBar/>
     </div>
     <h4>Top cities to explore</h4>
     <div className="cities row">
