@@ -29,7 +29,7 @@ class Rides extends React.Component {
 
   componentWillMount(){
     // fetch locations
-    this.props.actions.getLocations()
+    this.props.actions.getLocations();
   }
 
   componentWillReceiveProps({bikes, locations}){
@@ -116,11 +116,11 @@ class Rides extends React.Component {
           />
         </div>
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   let locations = state.BikeLocations.sort(function(a, b) {
     let locationA = a.name.toUpperCase();
     let locationB = b.name.toUpperCase();
@@ -129,7 +129,7 @@ function mapStateToProps(state, ownProps) {
   return {
     bikes : state.bikes,
     locations
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch){

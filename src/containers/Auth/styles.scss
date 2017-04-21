@@ -1,5 +1,6 @@
 .box-inner {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   & > form {
@@ -7,15 +8,23 @@
     flex-direction: column;
     padding: 50px;
   }
-  .box-register {
-      border-left: 1px solid gainsboro;
-  }
 }
 
 .box-auth {
   display: flex;
   flex-direction: column;
-  padding: 150px;
+}
+
+@media (min-width: 786px) {
+  .box-inner {
+    flex-direction: row !important;
+  }
+  .box-register {
+      border-left: 1px solid gainsboro;
+  }
+  .box-auth {
+    padding: 150px;
+  }
 }
 
 .fa-google {
@@ -33,5 +42,15 @@ input, input:active {
 .box-auth {
   .btn {
     margin-left: -0.5px;
+  }
+}
+
+.modal-body {
+  .btn {
+    position: relative;
+    top: -5px;
+  }
+  form {
+    display: flex;
   }
 }

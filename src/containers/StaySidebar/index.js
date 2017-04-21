@@ -45,7 +45,7 @@ class StaySidebar extends React.Component {
             {/*<button className="btn btn-default">Log in</button>*/}
           {/*</div>*/}
         {/*</ModalPrimary>*/}
-        <button onClick={this.onCheckOut}>CLICK</button>
+        <button onClick={this.onCheckOut} className="btn btn-danger">Book Now</button>
         <p className="text-muted text-center">You won't be charged yet</p>
       </div>
     );

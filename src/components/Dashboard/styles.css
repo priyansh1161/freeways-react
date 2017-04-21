@@ -11,6 +11,9 @@
 .dashboard {
   display: flex;
   flex-direction: column;
+  .btn {
+    padding: 11px;
+  }
 }
 
 .stays {
