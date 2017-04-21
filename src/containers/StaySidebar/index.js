@@ -1,20 +1,25 @@
 import React, {PropTypes} from 'react';
 import moment from 'moment';
+import { DateRangePicker } from 'react-dates';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as staysAction from '../../actions/checkOut';
 
-import ModalPrimary from '../../modules/ModalPrimary';
+// import ModalPrimary from '../../modules/ModalPrimary';
 import './styles.scss';
 
 class StaySidebar extends React.Component {
   constructor(props, context){
     super(props, context);
     this.onCheckOut = this.onCheckOut.bind(this);
+    this.state = {
+      startDate : null,
+      endDate : null,
+    };
   }
-  onCheckOut(e){
+  onCheckOut(){
     let days = moment(this.props.endDate).diff(moment(this.props.startDate),'days');
-    console.log(days);
+    // console.log(days);
     let largeAmount = days * this.props.price; // todo needs to be computed in backend
     this.props.actions.initCheckOut(
       this.props.user._id,
@@ -25,11 +30,19 @@ class StaySidebar extends React.Component {
     );
   }
   render() {
+    const smallDevice = window.matchMedia('(max-width: 768px)').matches;
+    const orientation = smallDevice ? 'vertical' : 'horizontal';
     return (
       <div className="sidebar">
         <h4 className="price text-center">₹ { this.props.price } <small>per night</small></h4>
-        <p><strong>Check in date:</strong> {moment(this.props.startDate).format('DD-MM-YY')}</p>
-        <p><strong>Check out date:</strong> {moment(this.props.endDate).format('DD-MM-YY')}</p>
+        <DateRangePicker
+          startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+          endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+          onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+          focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+          onFocusChange={focusedInput => this.setState({ focusedInput })}
+          withFullScreenPortal={smallDevice}
+          orientation={orientation}/>
         <p><strong>Rooms:</strong> {this.props.rooms}</p>
         {/*<ModalPrimary*/}
           {/*bsClass="btn btn-danger btn-block"*/}
