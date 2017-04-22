@@ -35,7 +35,7 @@ const Overview = ({stay}) =>{
 
   return (
     <div>
-      <h2>{stay.name}</h2>
+      <h2 className="text-center">{stay.name}</h2>
       <div className="box-support">
         <p className="text-muted">{ `${stay.location.addr}, ${stay.location.city}` }</p>
         <div className="stars">
@@ -59,7 +59,6 @@ const Overview = ({stay}) =>{
       </div>
       <h3>About this listing</h3>
       <p>{stay.listing}</p>
-      <a href="#">Contact Host</a>
       <div className="info">
         <div>
           <strong>The space</strong>

@@ -25,7 +25,6 @@ class Auth extends React.Component {
   componentWillReceiveProps ({auth}){
     if(auth._id){
       // user is logged in
-      console.log(auth);
       if (!auth.verified) {
         this.setState({
           showOTPModal: true

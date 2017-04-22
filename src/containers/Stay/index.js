@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as staysActions from '../../actions/staysAction';
-import { Carousel, Tabs, Tab, Glyphicon } from 'react-bootstrap';
+import { Carousel, Tabs, Tab } from 'react-bootstrap';
 
 import StaySidebar from '../StaySidebar';
 import Overview from './Overview';
@@ -68,7 +68,6 @@ class Stay extends React.Component {
               <Tab eventKey={3} title="The Host">
                 <HostDetails id={this.state.stay.hostId}/>
               </Tab> }
-              <Tab eventKey={4} title="Location">Tab 3 content</Tab>
             </Tabs>
           </div>
         </div>
