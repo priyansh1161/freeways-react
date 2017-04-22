@@ -27,12 +27,12 @@ class OTPModal extends React.Component {
           this.setState({toggleForms:true, msg: 'Please Enter OTP'});
         }
         else {
-          this.setState({msg : 'SomeThing Went Wrong, Please Try again'});
+          this.setState({msg : 'Something went wrong, please try again'});
         }
       })
       .catch((err) => {
         console.log(err);
-        this.setState({msg : 'SomeThing Went Wrong, Please Try again'});
+        this.setState({msg : 'Something went wrong, please try again'});
       });
   }
   OTPVerification(e){
@@ -59,7 +59,7 @@ class OTPModal extends React.Component {
       <input type="submit" value="Submit OTP" className="btn btn-danger"/>
     </form> : <form onSubmit={this.phoneVerification}>
       <input type="tel"
-             placeholder="PhoneNumber"
+             placeholder="Phone Number"
              value={this.state.phone}
              onChange={e => this.setState({phone : e.target.value})}
       />

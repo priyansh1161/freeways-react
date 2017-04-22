@@ -17,5 +17,11 @@ export default {
   },
   selectedStayDetails : {},
   stayCheckout : {},
-  error : null
+  error : null,
+  region : {
+    region : {},
+    city :[],
+    state : [],
+    places : []
+  }
 };

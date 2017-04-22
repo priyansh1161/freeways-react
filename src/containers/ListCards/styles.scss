@@ -1,0 +1,7 @@
+.scroll-horizontal {
+  overflow-x: scroll;
+  display: flex;
+  .card-basic {
+    width: 20em;
+  }
+}

@@ -15,9 +15,13 @@ class RegionComponent extends React.Component {
       }
     };
   }
-
-
-
+  componentWillMount(){
+    this.props.actions.region.getRegions();
+  }
+  componentWillReceiveProps(region){
+    this.setState({region});
+    console.log(region);
+  }
   //todo add description and photos
   render() {
     return (
