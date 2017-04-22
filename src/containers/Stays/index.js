@@ -74,7 +74,9 @@ class Stays extends React.Component {
       <div>
         <div className="box-filters">
           <select className="select-place" onChange={this.selectLocation}>
-            {this.state.locations.map(curr => <option value={curr} key={curr}>{curr}</option> )}
+            {this.state.locations.map((curr) => {
+              console.log(curr);
+              return <option value={curr} key={curr}>{curr}</option>} )}
           </select>
           <DateRangePicker
             startDate={this.state.startDate} // momentPropTypes.momentObj or null,
