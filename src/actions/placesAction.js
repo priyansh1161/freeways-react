@@ -16,6 +16,7 @@ export function getRegions(id){
     dispatch(showLoading());
     axios.get(`${baseURI}/api/places/region?id=${id}`)
       .then(({data}) => {
+        console.log(data);
         dispatch(hideLoading());
         dispatch({
           type : REGION_LOAD_SUCCESS,
@@ -26,6 +27,48 @@ export function getRegions(id){
         dispatch(hideLoading());
         dispatch({
           type : REGION_LOAD_FAILURE,
+          payload : err.message || 'Something Went wrong'
+        });
+      });
+  };
+}
+
+export function getStates(id){
+  return function (dispatch){
+    dispatch(showLoading());
+    axios.get(`${baseURI}/api/places/state?id=${id}`)
+      .then(({data}) => {
+        dispatch(hideLoading());
+        dispatch({
+          type : STATES_LOAD_SUCCESS,
+          payload : data
+        });
+      })
+      .catch((err) => {
+        dispatch(hideLoading());
+        dispatch({
+          type : STATES_LOAD_FAILURE,
+          payload : err.message || 'Something Went wrong'
+        });
+      });
+  };
+}
+
+export function getCity(id){
+  return function (dispatch){
+    dispatch(showLoading());
+    axios.get(`${baseURI}/api/places/city?id=${id}`)
+      .then(({data}) => {
+        dispatch(hideLoading());
+        dispatch({
+          type : CITY_LOAD_SUCCESS,
+          payload : data
+        });
+      })
+      .catch((err) => {
+        dispatch(hideLoading());
+        dispatch({
+          type : CITY_LOAD_FAILURE,
           payload : err.message || 'Something Went wrong'
         });
       });

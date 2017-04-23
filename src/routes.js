@@ -23,8 +23,8 @@ export default (
     </Route>
     <Route path="auth" component={Auth}/>
     <Route path="region/:id" component={RegionComponent}/>
-    <Route path="region/:id" component={StateComponent}/>
-    <Route path="region/:id" component={CityComponent}/>
+    <Route path="state/:id" component={StateComponent}/>
+    <Route path="city/:id" component={CityComponent}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );

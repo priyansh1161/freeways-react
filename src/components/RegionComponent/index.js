@@ -16,11 +16,11 @@ class RegionComponent extends React.Component {
     };
   }
   componentWillMount(){
-    this.props.actions.region.getRegions();
+    this.props.actions.getRegions(this.props.params.id);
   }
-  componentWillReceiveProps(region){
+  componentWillReceiveProps({region}){
     this.setState({region});
-    console.log(region);
+    console.log(region, 'sas');
   }
   //todo add description and photos
   render() {
@@ -32,9 +32,15 @@ class RegionComponent extends React.Component {
           data={this.state.region.state}
         />
         <h4>Cities in this region</h4>
-        {/*<ListCards/>*/}
+        <ListCards
+          type="city"
+          data={this.state.region.city}
+        />
         <h4>Places in this region</h4>
-        {/*<ListCards/>*/}
+        <ListCards
+          type="place"
+          data={this.state.region.places}
+        />
       </div>
     );
   }
