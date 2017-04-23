@@ -13,6 +13,7 @@ import NotFoundPage from './components/NotFoundPage';
 import RegionComponent from './components/RegionComponent';
 import StateComponent from './components/StateComponent';
 import CityComponent from './components/CityComponent';
+import Checkout from './components/Checkout';
 
 export default (
   <Route path="/" component={App}>
@@ -27,6 +28,7 @@ export default (
     <Route path="region/:id" component={RegionComponent}/>
     <Route path="state/:id" component={StateComponent}/>
     <Route path="city/:id" component={CityComponent}/>
+    <Route path="checkout/:id" component={Checkout}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
