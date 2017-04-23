@@ -8,6 +8,7 @@ import Rides from './containers/Rides';
 import Stays from './containers/Stays';
 import Stay from './containers/Stay';
 import Auth from './containers/Auth';
+import UserProfile from './containers/UserProfile';
 import NotFoundPage from './components/NotFoundPage';
 import RegionComponent from './components/RegionComponent';
 import StateComponent from './components/StateComponent';
@@ -22,6 +23,7 @@ export default (
       <Route path=":id" component={Stay}/>
     </Route>
     <Route path="auth" component={Auth}/>
+    <Route path="profile" component={UserProfile}/>
     <Route path="region/:id" component={RegionComponent}/>
     <Route path="state/:id" component={StateComponent}/>
     <Route path="city/:id" component={CityComponent}/>
