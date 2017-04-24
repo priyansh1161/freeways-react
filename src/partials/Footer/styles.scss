@@ -11,9 +11,16 @@ html {
   width: 100%;
   /* Set the fixed height of the footer here */
   padding: 10px;
-  background-color: #5c616c;
-  &, & a, & a:active, & a:hover {
-    color: #eff0eb;
+  background-color: #282a36;
+  color: #f8f8f2;
+  & a, & a:active, & a:hover {
+    color: #50fa7b;
+  }
+  .footer-appendix {
+    border-bottom: 1px solid #909194;
+  }
+  & > div {
+    padding: 20px;
   }
 }
 
