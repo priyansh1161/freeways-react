@@ -13,8 +13,9 @@ class StaySidebar extends React.Component {
     super(props, context);
     this.onCheckOut = this.onCheckOut.bind(this);
     this.state = {
-      startDate : null,
-      endDate : null,
+      startDate : props.startDate,
+      endDate : props.endDate,
+      rooms : props.rooms
     };
   }
   onCheckOut(){
@@ -78,7 +79,8 @@ function mapStateToProps(state) {
   return {
     user : state.auth,
     stay : state.stay, // redundant todo needs to be changed in future, either this or this.props.*
-    checkout : state.checkout
+    checkout : state.checkout,
+    selectedStayDetails : state.selectedStayDetails
   };
 }
 

@@ -48,14 +48,17 @@ export function setDatesAndRooms (startDate, endDate, rooms){
 export function getStayDetails(id){
   return function(dispatch){
     dispatch(showLoading());
-    axios.get(`${baseURI}/api/stays/${id}`)
+    axios.get(`${baseURI}/api/stays/custom/${id}`)
       .then(({data}) =>{
         dispatch(hideLoading());
         dispatch(stayDetailsLoadSuccess(data));
       })
       .catch((err) => {
         dispatch(hideLoading());
-        throw err;
+        dispatch({
+          type : '_FAILURE',
+          payload : err.message || "Can't load the required details"
+        })
       });
   };
 }
@@ -75,3 +78,5 @@ export function getHostDetails(id) {
       .catch(err => dispatch({type : HOST_LOAD_FAILURE, payload : err.message}));
   }
 }
+
+

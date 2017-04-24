@@ -9,6 +9,18 @@ function logInSuccess(payload){
   return {type : LOG_IN_FAILURE, payload };
 }
 
+export function bootUp(){
+   return function(dispatch){
+     axios.get(`${baseURI}/api/v1/profile`)
+       .then(({data}) => {
+          if(data.success){
+            dispatch(logInSuccess(data.user));
+          }
+       })
+       .catch((err) => logInFailure(err.message));
+   }
+}
+
 export function localLogIn(email, password){
   return function (dispatch){
     dispatch(showLoading());

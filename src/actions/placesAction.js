@@ -74,3 +74,25 @@ export function getCity(id){
       });
   };
 }
+
+export function getPlace(id){
+  return function (dispatch){
+    dispatch(showLoading());
+    axios.get(`${baseURI}/api/places/${id}`)
+      .then(({data}) => {
+        console.log(data);
+        dispatch(hideLoading());
+        dispatch({
+          type : PLACES_LOAD_SUCCESS,
+          payload : data
+        })
+      })
+      .catch((err) => {
+        dispatch(hideLoading());
+        dispatch({
+          type : PLACES_LOAD_FAILURE,
+          payload : err.message
+        });
+      });
+  }
+}

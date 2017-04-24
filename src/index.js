@@ -9,7 +9,9 @@ import configureStore from './store/configureStore';
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 import { syncHistoryWithStore } from 'react-router-redux';
 import 'bootswatch/paper/bootstrap.min.css';
+import {bootUp} from './actions/authAction';
 const store = configureStore();
+store.dispatch(bootUp());
 // setTimeout(()=> store.dispatch(getBikes('calangute',1491727803000,1491814203000)),5000);
 
 // Create an enhanced history that syncs navigation events with the store
