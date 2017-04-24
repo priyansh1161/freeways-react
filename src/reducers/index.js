@@ -14,6 +14,7 @@ import selectedStayDetails from './selectedStayDetailsReducer';
 import checkout from './checkoutReducer';
 import error from './errorHandler';
 import region from './regionReducer';
+import orders from './ordersReducer';
 export default combineReducers({
   error,
   bikes,
@@ -23,6 +24,7 @@ export default combineReducers({
   stay,
   region,
   checkout,
+  orders,
   BikeLocations,
   staysLocations,
   selectedLocation,

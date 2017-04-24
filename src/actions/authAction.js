@@ -1,4 +1,4 @@
-import {LOG_IN_SUCCESS, LOG_IN_FAILURE, VERIFICATION_SUCCESS, VERIFICATION_FAILURE} from '../constants/actionTypes';
+import {LOG_IN_SUCCESS, LOG_IN_FAILURE, VERIFICATION_SUCCESS, VERIFICATION_FAILURE, ORDERS_LOAD_SUCCESS} from '../constants/actionTypes';
 import {devBaseURI as baseURI} from '../constants/resources';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import axios from 'axios';
@@ -57,4 +57,26 @@ export function phoneVerification(status, msg) {
         type : VERIFICATION_FAILURE,
         payload : msg || 'Failed to Verify your Phone number, please Try again'
     };
+}
+
+export function getOrders(id) {
+  return function (dispatch) {
+    dispatch(showLoading());
+    axios.get(`/api/custom/orders?id=${id}`)
+      .then(({data}) => {
+        console.log(data);
+        dispatch({
+          type : ORDERS_LOAD_SUCCESS,
+          payload : data
+        });
+        dispatch(hideLoading());
+    })
+      .catch((err) => {
+        dispatch(hideLoading());
+        dispatch({
+          type : '_FAILURE',
+          payload : err.message
+        })
+      })
+  }
 }

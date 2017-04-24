@@ -23,5 +23,6 @@ export default {
     city :[],
     state : [],
     places : []
-  }
+  },
+  orders : []
 };
