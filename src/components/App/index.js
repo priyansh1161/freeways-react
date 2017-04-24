@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import Navbar from '../../partials/Navbar';
+import Navbar from '../../containers/Navbar';
 import Footer from '../../partials/Footer';
 import GlobalErrors from '../../containers/GlobalErrors';
 import LoadingBar from 'react-redux-loading-bar';
