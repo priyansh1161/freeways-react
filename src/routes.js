@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import Rides from './containers/Rides';
 import Stays from './containers/Stays';
 import Stay from './containers/Stay';
+import City from './containers/City';
 import Auth from './containers/Auth';
 import UserProfile from './containers/UserProfile';
 import NotFoundPage from './components/NotFoundPage';
@@ -23,6 +24,7 @@ export default (
       <IndexRoute component={Stays}/>
       <Route path=":id" component={Stay}/>
     </Route>
+    <Route path="place/:id" component={City}/>
     <Route path="auth" component={Auth}/>
     <Route path="profile" component={UserProfile}/>
     <Route path="region/:id" component={RegionComponent}/>

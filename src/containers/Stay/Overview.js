@@ -92,8 +92,7 @@ const Overview = ({stay}) =>{
           <div className="fuller">
             <strong>The space</strong>
             <br/>
-            {stay.description.split(/(\n|\r|\f)/g).map(curr => <p>{curr}</p>)}
-
+            {stay.description.split(/(\n|\r|\f)/g).map((curr, i) => <p key={i}>{curr}</p>)}
           </div>
         </div>
         {stay.space.rules && <div>
@@ -101,7 +100,7 @@ const Overview = ({stay}) =>{
           <div className="fuller">
             <p></p>
             <hr/>
-            <p>{stay.space.rules.split(/(\n|\r|\f)/g).map(curr => <p>{curr}</p>)}</p>
+            {stay.space.rules.split(/(\n|\r|\f)/g).map(curr => <p>{curr}</p>)}
           </div>
         </div> }
         <div>
