@@ -1,4 +1,4 @@
-import {LOG_IN_SUCCESS, LOG_IN_FAILURE, VERIFICATION_SUCCESS, VERIFICATION_FAILURE, ORDERS_LOAD_SUCCESS} from '../constants/actionTypes';
+import {LOG_IN_SUCCESS, LOG_IN_FAILURE, VERIFICATION_SUCCESS, VERIFICATION_FAILURE, ORDERS_LOAD_SUCCESS, SIGN_OUT} from '../constants/actionTypes';
 import {devBaseURI as baseURI} from '../constants/resources';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import axios from 'axios';
@@ -14,6 +14,7 @@ export function bootUp(){
      axios.get(`${baseURI}/api/v1/profile`)
        .then(({data}) => {
           if(data.success){
+            console.log(data,'dxcfgvbhjnm');
             dispatch(logInSuccess(data.user));
           }
        })
@@ -74,7 +75,7 @@ export function phoneVerification(status, msg) {
 export function getOrders(id) {
   return function (dispatch) {
     dispatch(showLoading());
-    axios.get(`/api/custom/orders?id=${id}`)
+    axios.get(`${baseURI}/api/custom/orders?id=${id}`)
       .then(({data}) => {
         console.log(data);
         dispatch({
@@ -90,5 +91,11 @@ export function getOrders(id) {
           payload : err.message
         })
       })
+  }
+}
+
+export function signOut() {
+  return {
+    type : SIGN_OUT
   }
 }

@@ -2,8 +2,27 @@ import React from 'react';
 import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as authActions from '../../actions/authAction';
 
 class NavbarComponent extends React.Component {
+  constructor (props){
+    super(props);
+    this.state = {
+      user : props.user || {},
+      name : 'userName'
+    };
+    this.signOut = this.signOut.bind(this);
+  }
+  componentWillReceiveProps({user}){
+    this.setState({user, name : user.local.name || user.google.name || user.facebook.name});
+  }
+
+  signOut(){
+    this.props.actions.signOut();
+  }
+
   render() {
     return (
       <Navbar fixedTop collapseOnSelect style={{zIndex : 1}}>
@@ -29,16 +48,17 @@ class NavbarComponent extends React.Component {
             <NavItem eventKey={1}>About Us</NavItem>
             <NavItem eventKey={2}>Contact Us</NavItem>
             {
-              false ?
-              <NavDropdown eventKey={3} title="username" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Profile</MenuItem>
-                <MenuItem eventKey={3.2}>Settings</MenuItem>
+              this.state.user._id ?
+              <NavDropdown eventKey={3} title={this.state.name} id="basic-nav-dropdown">
+                <LinkContainer to="/profile">
+                  <MenuItem eventKey={3.1}>Profile</MenuItem>
+                </LinkContainer>
                 <MenuItem divider />
                 <MenuItem eventKey={3.3}>Logout</MenuItem>
               </NavDropdown>
               :
               <LinkContainer to="/auth">
-                <NavItem eventKey={3}>Sign Up</NavItem>
+                <NavItem eventKey={3} onClick={this.signOut}>Sign Up</NavItem>
               </LinkContainer>
             }
           </Nav>
@@ -48,4 +68,16 @@ class NavbarComponent extends React.Component {
   }
 }
 
-export default NavbarComponent;
+function mapStateToProps(state) {
+  return {
+    user : state.auth
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    actions : bindActionCreators(authActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(NavbarComponent);

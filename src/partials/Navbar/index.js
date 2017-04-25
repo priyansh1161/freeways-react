@@ -14,7 +14,6 @@ const NavbarComponent = () => (
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-
           <LinkContainer to="/rides">
             <NavItem eventKey={1}>Rides</NavItem>
           </LinkContainer>

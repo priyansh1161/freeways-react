@@ -9,20 +9,22 @@ class UserProfile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      user : {},
+      user : props.user,
       orders : [],
       name : ''
     };
     this.generateOrdersCard = this.generateOrdersCard.bind(this);
   }
   componentWillMount(){
-    this.props.actions.getOrders(user._id);
+    console.log(this.props.user);
+    this.props.actions.getOrders(this.props.user._id);
   }
   componentWillReceiveProps({user, orders}){
     this.setState({user, orders})
   }
   findName(){
-    let user =  this.props.user;
+    let user =  this.state.user;
+    console.log(this.state.user,'dfasfafasfaf');
     return user.local.name || user.facebook.name || user.google.name;
   }
   generateOrdersCard(){
@@ -41,7 +43,7 @@ class UserProfile extends React.Component {
     return (
       <div>
         <Jumbotron>
-          <h1 className="text-center">{this.findName.bind(this)}'s Profile</h1>
+          <h1 className="text-center">{this.findName.call(this)}'s Profile</h1>
         </Jumbotron>
         <div className="box-transactions">
           <Grid>

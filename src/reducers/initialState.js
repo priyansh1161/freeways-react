@@ -3,7 +3,11 @@ export default {
   bikes : {},
   stays : [],
   cart : [],
-  user : {},
+  user : {
+    local : {},
+    google : {},
+    facebook : {}
+  },
   locations : [],
   selectedLocation : '',
   stay : {

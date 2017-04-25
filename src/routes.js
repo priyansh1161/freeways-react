@@ -29,6 +29,6 @@ export default (
     <Route path="state/:id" component={StateComponent}/>
     <Route path="city/:id" component={CityComponent}/>
     <Route path="checkout/:id" component={Checkout}/>
-    <Route path="*" component={NotFoundPage}/>
+    {/*<Route path="*" component={NotFoundPage}/>*/}
   </Route>
 );
