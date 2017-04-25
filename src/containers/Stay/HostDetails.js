@@ -14,7 +14,7 @@ class HostDetails extends React.Component {
     };
   }
   componentDidMount(){
-    this.props.actions.getHostDetails(this.props.stay.hostId);
+    this.props.actions.getHostDetails(this.props.stay.stay.hostId);
   }
   componentWillReceiveProps(nextProps){
     this.setState({host : nextProps.stay.host || this.state.host});
@@ -36,7 +36,7 @@ class HostDetails extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state,'asd');
+  console.log(state.stay,'asd');
   return {
     stay : state.stay
   };

@@ -22,7 +22,8 @@ class Stay extends React.Component {
         },
         facilities : []
       },
-      data : false
+      data : false,
+      bookings : []
     };
     this.generateCarouselItems = this.generateCarouselItems.bind(this);
 
@@ -30,10 +31,12 @@ class Stay extends React.Component {
   componentWillMount(){
     this.props.actions.getStayDetails(this.props.params.id);
   }
-  componentWillReceiveProps({stay}){
-    this.setState({stay, data : true});
+  componentWillReceiveProps({stay, bookings}){
+    console.log(stay, bookings);
+    this.setState({stay, data : true, bookings});
   }
   generateCarouselItems(){
+    console.log(this.state.stay);
     return this.state.stay.photos.map(curr => <Carousel.Item>
       <div style={{
         height: '300px',
@@ -76,8 +79,10 @@ class Stay extends React.Component {
   }
 }
 function mapStateToProps(state){
+  console.log(state.stay.stay,'sdff');
   return {
-    stay : state.stay,
+    stay : state.stay.stay,
+    bookings : state.stay.bookings,
     selectedStayDetails : state.selectedStayDetails
   };
 }
