@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid, Row, Col, Panel } from 'react-bootstrap';
 
 import StayCard from '../../modules/StayCard';
 import SearchBar from '../SearchBar';
@@ -66,50 +65,7 @@ const Dashboard = () => (
           stars={5}
         />
       </div>
-
     </div>
-    <div className="why-us">
-      <h3 className="text-center">Why Us?</h3>
-      <Grid>
-        <Row className="show-grid text-center">
-          <Col sm={4}>
-            <Panel>
-              <h4>Value for Money</h4>
-            </Panel>
-          </Col>
-          <Col sm={4}>
-            <Panel>
-              <h4>Live like a local</h4>
-            </Panel>
-          </Col>
-          <Col sm={4}>
-            <Panel>
-              <h4>24/7 customer support</h4>
-            </Panel>
-          </Col>
-        </Row>
-      </Grid>
-    </div>
-    <h3 className="text-center">Need Help?</h3>
-    <Grid>
-      <Row className="show-grid text-center">
-        <Col sm={4}>
-          <Panel>
-            <h4>Call Us<br/><small><a href="tel:+919855764054">+91 9855 764 054</a></small></h4>
-          </Panel>
-        </Col>
-        <Col sm={4}>
-          <Panel>
-            <h4>Email Us<br/><small><a href="mailto:support@freeways.in">support@freeways.in</a></small></h4>
-          </Panel>
-        </Col>
-        <Col sm={4}>
-          <Panel>
-            <h4>Chat With Us<br/><small><a href="javascript:void(Tawk_API.toggle())">Click here to chat</a></small></h4>
-          </Panel>
-        </Col>
-      </Row>
-    </Grid>
   </div>
 );
 

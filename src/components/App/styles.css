@@ -1,12 +1,12 @@
 .app {
   /* Margin bottom by footer height */
-  margin-bottom: 45px;
+  margin-bottom: 240px;
   margin-top: 80px;
 }
 
 @media (max-width: 768px) {
   .app {
     /* Margin bottom by footer height */
-    margin-bottom: 120px;
+    margin-bottom: 460px;
   }
 }
