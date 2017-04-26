@@ -3,9 +3,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  & > form {
+  & > .box-login, form {
     display: flex;
     flex-direction: column;
+  }
+  & > .box-login, & > form {
     padding: 50px;
   }
 }
@@ -50,7 +52,7 @@ input, input:active {
     position: relative;
     top: -5px;
   }
-  form {
+  .box-login {
     display: flex;
   }
 }

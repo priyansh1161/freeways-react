@@ -59,34 +59,36 @@ class Auth extends React.Component {
     return (
       <div className="box-auth">
         <div className="box-inner">
-          <form  onSubmit={this.logIn} className="login">
-            <input type="email"
-                   value={this.state.lEmail}
-                   placeholder="Email"
-                   name="lEmail"
-                   onChange={this.handleInputChange}
-            />
-            <input type="password"
-                   value={this.state.lPassword}
-                   placeholder="Password"
-                   name="lPassword"
-                   onChange={this.handleInputChange}
-            />
-            <button className="btn btn-block btn-danger" type="submit">Login</button>
-            <div className="text-center text-muted">OR</div>
-          </form>
-          <a href={`${baseURI}/auth/auth/google`}>
-            <button className="btn btn-block btn-danger">
-              <i className="fa fa-google"/>
-              Sign in with Google
-            </button>
-          </a>
-          <a href={`${baseURI}/auth/auth/facebook`}>
-            <button className="btn btn-block btn-primary">
-              <i className="fa fa-facebook"/>
-              Sign in with Facebook
-            </button>
-          </a>
+          <div className="box-login">
+            <form  onSubmit={this.logIn} className="login">
+              <input type="email"
+                     value={this.state.lEmail}
+                     placeholder="Email"
+                     name="lEmail"
+                     onChange={this.handleInputChange}
+              />
+              <input type="password"
+                     value={this.state.lPassword}
+                     placeholder="Password"
+                     name="lPassword"
+                     onChange={this.handleInputChange}
+              />
+              <button className="btn btn-block btn-danger" type="submit">Login</button>
+              <div className="text-center text-muted">OR</div>
+            </form>
+            <a href={`${baseURI}/auth/auth/google`}>
+              <button className="btn btn-block btn-danger">
+                <i className="fa fa-google"/>
+                Sign in with Google
+              </button>
+            </a>
+            <a href={`${baseURI}/auth/auth/facebook`}>
+              <button className="btn btn-block btn-primary">
+                <i className="fa fa-facebook"/>
+                Sign in with Facebook
+              </button>
+            </a>
+          </div>
           <form action="" onSubmit={this.signUp} className="box-register">
             <input type="email"
                    value={this.state.sEmail}
