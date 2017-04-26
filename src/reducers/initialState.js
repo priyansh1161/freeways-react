@@ -28,5 +28,20 @@ export default {
     state : [],
     places : []
   },
-  orders : []
+  state : {
+    city : [],
+    places : []
+  },
+  city : {
+    todo : [],
+    drinks : [],
+  },
+  place : {
+    photos : []
+  },
+  orders : [],
+  dashboard : {
+    cities : [],
+    places : []
+  }
 };

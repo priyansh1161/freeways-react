@@ -14,15 +14,23 @@ import selectedStayDetails from './selectedStayDetailsReducer';
 import checkout from './checkoutReducer';
 import error from './errorHandler';
 import region from './regionReducer';
+import city from './cityReducer';
+import state from './stateReducer';
+import place from './placeReducer';
 import orders from './ordersReducer';
+import dashboard from './dashboardReducer';
 export default combineReducers({
   error,
   bikes,
   cart,
+  dashboard,
   auth,
   stays,
   stay,
   region,
+  state,
+  city,
+  place,
   checkout,
   orders,
   BikeLocations,

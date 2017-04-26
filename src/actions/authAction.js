@@ -17,6 +17,8 @@ export function bootUp(){
             console.log(data,'dxcfgvbhjnm');
             dispatch(logInSuccess(data.user));
           }
+          else
+            console.log(data,'fail');
        })
        .catch((err) => logInFailure(err.message));
    }

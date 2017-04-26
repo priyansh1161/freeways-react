@@ -13,7 +13,7 @@ import UserProfile from './containers/UserProfile';
 import NotFoundPage from './components/NotFoundPage';
 import RegionComponent from './components/RegionComponent';
 import StateComponent from './components/StateComponent';
-import CityComponent from './components/CityComponent';
+import CityComponent from './containers/City';
 import Checkout from './components/Checkout';
 
 export default (

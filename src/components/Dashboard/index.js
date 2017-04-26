@@ -4,69 +4,88 @@ import StayCard from '../../modules/StayCard';
 import SearchBar from '../SearchBar';
 import ListCards from '../../containers/ListCards';
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as placesAction from '../../actions/placesAction';
+import * as staysAction from '../../actions/staysAction';
 import './styles.css';
 
-const Dashboard = () => (
-  <div className="dashboard container">
-    <div className="travelling-to">
-      <h3>Travelling To?</h3>
-      <SearchBar/>
-    </div>
-    <h4>Top cities to explore</h4>
-    <ListCards className="cities"/>
-    <h4>Places in Delhi</h4>
-    <ListCards className="places"/>
-    <h4>Stays in Delhi</h4>
-    <div className="stays row">
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <StayCard
-          id={1}
-          imageURL="https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=medium"
-          title="House in countryside (20 min. sea)"
-          capacity="2 beds"
-          price="2,928"
-          specification="Private Room"
-          stars={5}
-        />
-      </div>
+class Dashboard extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      cities : [],
+      places : [],
+      stays : []
+    }
+  }
 
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <StayCard
-          id={2}
-          imageURL="https://a0.muscache.com/im/pictures/6451545/08a2d47b_original.jpg?aki_policy=medium"
-          title="Luxurious stone villa in Crete"
-          capacity="1 beds"
-          price="3,527"
-          specification="Entire home/flat"
-          stars={5}
-        />
-      </div>
+  componentWillMount(){
+    this.props.placesAction.getTopCities();
+    this.props.placesAction.getTopPlaces();
+    this.props.staysAction.getTopStays();
+  }
+  componentWillReceiveProps({cities, places, stays}){
+    this.setState({cities, places, stays});
+    console.log(cities,'nuni');
+  }
 
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <StayCard
-          id={3}
-          imageURL="https://a0.muscache.com/im/pictures/53851032/decfda84_original.jpg?aki_policy=medium"
-          title="Serene powerful tower retreat"
-          capacity="1 beds"
-          price="11,307"
-          specification="Entire home/flat"
-          stars={5}
+  render(){
+    return (
+      <div className="dashboard container">
+        <div className="travelling-to">
+          <h3>Travelling To?</h3>
+          <SearchBar/>
+        </div>
+        <h4>Top cities to explore</h4>
+        <ListCards
+          className="cities"
+          type="city"
+          data={this.state.cities}
         />
-      </div>
-
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <StayCard
-          id={4}
-          imageURL="https://a0.muscache.com/im/pictures/52149945/33130c63_original.jpg?aki_policy=medium"
-          title="Stunning All Bamboo house by River"
-          capacity="3 beds"
-          price="21,628"
-          specification="Entire home/flat"
-          stars={5}
+        <h4>Top Places to explore</h4>
+        <ListCards
+          type='place'
+          data={this.state.places}
+          className="places"
         />
-      </div>
-    </div>
-  </div>
-);
+        <h4>Most Famous Home Stays</h4>
+        <div className="stays row">
+          {this.state.stays.map(curr => (
+            <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+              <StayCard
+                id={curr._id}
+                imageURL={curr.photos[0]}
+                title={curr.name}
+                capacity={`${curr.space.beds} beds`}
+                price={curr.price}
+                specification={curr.stayType}
+                stars={curr.stars}
+              />
+            </div>
+          ))}
 
-export default Dashboard;
+
+        </div>
+      </div>
+    );
+  }
+}
+
+
+function mapStateToProps(state) {
+  console.log(state.dashboard,'nuni 2');
+  return {
+    cities : state.dashboard.cities,
+    places : state.dashboard.places,
+    stays : state.stays
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    placesAction : bindActionCreators(placesAction, dispatch),
+    staysAction : bindActionCreators(staysAction, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

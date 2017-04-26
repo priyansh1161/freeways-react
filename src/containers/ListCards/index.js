@@ -7,13 +7,17 @@ class ListCards extends React.Component {
     return (
       <div className="row">
         {this.props.data && this.props.data.map(curr => <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-          <Link to={`${this.props.type}/${curr._id}`}>
+          {this.props.type === 'basic' ? <Link to={`${this.props.type}/${curr._id}`}>
             <BasicCard
               title={curr.name}
               key={curr._id}
               imageURL={curr.photo}
             />
-          </Link>
+          </Link> : <BasicCard
+            title={curr.name}
+            key={curr._id}
+            imageURL={curr.photo}
+          />  }
         </div>)}
       </div>
     );

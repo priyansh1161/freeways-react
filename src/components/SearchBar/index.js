@@ -42,7 +42,7 @@ class SearchBar extends React.Component {
         <Typeahead
           bsSize="large"
           multiple={false}
-          options={['Delhi', 'Noida', 'Gurugram']}
+          options={this.state.options}
           placeholder="Travelling to ?"
           maxResults={2}
           minLength={1}

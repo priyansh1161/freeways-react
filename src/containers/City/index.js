@@ -1,57 +1,63 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as staysActions from '../../actions/staysAction';
+import * as placesActions from '../../actions/placesAction';
 import { Carousel, Tabs, Tab } from 'react-bootstrap';
+
+import ListCards from '../../containers/ListCards';
+import AdvancedCard from '../../modules/AdvancedCard';
 
 class City extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      stay : {
-        photos : [],
-        reviews : [],
-        space : {
-          rules : ''
-        },
-        facilities : []
-      },
-      data : false
+      city : props.city
     };
     this.generateCarouselItems = this.generateCarouselItems.bind(this);
 
   }
   componentWillMount(){
-    this.props.actions.getStayDetails(this.props.params.id);
+    // this.props.actions.getStayDetails(this.props.params.id);
   }
-  componentWillReceiveProps({stay}){
-    this.setState({stay, data : true});
+  componentWillReceiveProps({city}){
+    this.setState({city});
   }
-  generateCarouselItems(){
-    return this.state.stay.photos.map((curr, i) => <Carousel.Item key={i}>
-      <div style={{
-        height: '300px',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundImage: `url(${curr})`
-      }}/>
-    </Carousel.Item> );
-  }
-
   render() {
     return (
       <div>
         <Carousel>
-          {this.generateCarouselItems()}
+          <Carousel.Item key={i}>
+            <div style={{
+              height: '300px',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundImage: `url(${this.city.photo})`
+            }}/>
+          </Carousel.Item>
         </Carousel>
         <div className="city-container">
           <div className="main">
             <Tabs defaultActiveKey={1}>
               <Tab eventKey={1} title="Places">
+                <ListCards
+                  type="place"
+                  data={this.state.city.place}
+                />
               </Tab>
               <Tab eventKey={2} title="Todos">
+                {this.state.todos.map(curr => (
+                  <AdvancedCard
+                    title={curr.title}
+                    imgURL={curr.photo}
+                    description={curr.text}
+                  />
+                ))}
               </Tab>
               <Tab eventKey={3} title="Drinks">
+                <ListCards
+                  type="basic"
+                  data={this.state.drinks}
+                />
               </Tab>
             </Tabs>
           </div>
@@ -62,13 +68,12 @@ class City extends React.Component {
 }
 function mapStateToProps(state){
   return {
-    stay : state.stay,
-    selectedStayDetails : state.selectedStayDetails
+    city : state.city
   };
 }
 function mapDispatchToProps(dispatch){
   return {
-    actions : bindActionCreators(staysActions, dispatch)
+    actions : bindActionCreators(placesActions, dispatch)
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(City);

@@ -6,7 +6,9 @@ import {
   PLACES_LOAD_SUCCESS,
   PLACES_LOAD_FAILURE,
   REGION_LOAD_FAILURE,
-  REGION_LOAD_SUCCESS
+  REGION_LOAD_SUCCESS,
+  CITY_ARRAY_LOAD_SUCCESS,
+  PLACES_ARRAY_LOAD_SUCCESS
 } from '../constants/actionTypes';
 import {devBaseURI as baseURI} from '../constants/resources';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
@@ -84,6 +86,49 @@ export function getPlace(id){
         dispatch(hideLoading());
         dispatch({
           type : PLACES_LOAD_SUCCESS,
+          payload : data
+        })
+      })
+      .catch((err) => {
+        dispatch(hideLoading());
+        dispatch({
+          type : PLACES_LOAD_FAILURE,
+          payload : err.message
+        });
+      });
+  }
+}
+
+export function getTopCities(){
+  return function (dispatch) {
+    axios.get(`${baseURI}/api/places/limited/city`)
+      .then(({data}) => {
+        console.log(data);
+        dispatch(hideLoading());
+        dispatch({
+          type : CITY_ARRAY_LOAD_SUCCESS,
+          payload : data
+        })
+      })
+      .catch((err) => {
+        dispatch(hideLoading());
+        dispatch({
+          type : CITY_LOAD_FAILURE,
+          payload : err.message
+        });
+      });
+  }
+}
+
+export function getTopPlaces(){
+  return function (dispatch){
+    dispatch(showLoading());
+    axios.get(`${baseURI}/api/places/?limit=4`)
+      .then(({data}) => {
+        console.log(data);
+        dispatch(hideLoading());
+        dispatch({
+          type : PLACES_ARRAY_LOAD_SUCCESS,
           payload : data
         })
       })

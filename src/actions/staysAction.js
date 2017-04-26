@@ -79,4 +79,17 @@ export function getHostDetails(id) {
   }
 }
 
-
+export function getTopStays(city, startDate, endDate,rooms, limit, offset) {
+  return function (dispatch){
+    dispatch(showLoading());
+    axios.get(`${baseURI}/api/stays/?limit=4`)
+      .then(({data}) => {
+        dispatch(hideLoading());
+        dispatch(allStaysLoadSuccess(data));
+      })
+      .catch((err) => {
+        dispatch(hideLoading());
+        throw err;
+      });
+  };
+}
