@@ -8,14 +8,14 @@ class ListCards extends React.Component {
     return (
       <div className="row">
         {this.props.data && this.props.data.map((curr, index) => <div key={index} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-          {this.props.type === 'basic' ? <Link to={`${this.props.type}/${curr._id}`}>
+          {this.props.type !== 'basic' ? <Link to={`${this.props.type}/${curr._id}`}>
             <BasicCard
               title={curr.name}
               key={curr._id}
               imageURL={curr.photo || curr.photos[0]}
             />
           </Link> : <BasicCard
-            title={curr.name}
+            title={curr.title || curr.name}
             key={curr._id}
             imageURL={curr.photo || curr.photos[0]}
           />  }

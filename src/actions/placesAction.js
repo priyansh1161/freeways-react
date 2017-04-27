@@ -61,6 +61,7 @@ export function getCity(id){
     dispatch(showLoading());
     axios.get(`${baseURI}/api/places/city?id=${id}`)
       .then(({data}) => {
+      console.log(data,'city');
         dispatch(hideLoading());
         dispatch({
           type : CITY_LOAD_SUCCESS,

@@ -3,6 +3,7 @@ import React from 'react';
 import './styles.scss';
 
 const BasicCard = (props) => {
+  console.log(props,'drinks');
   return (
     <div className="card-basic">
       <img src={props.imageURL} alt={props.title}/>

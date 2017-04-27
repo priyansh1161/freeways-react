@@ -11,16 +11,17 @@ class City extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      city : props.city
+      city : props.city.city,
+      place : props.city.place
     };
     // this.generateCarouselItems = this.generateCarouselItems.bind(this);
 
   }
   componentWillMount(){
-    // this.props.actions.getStayDetails(this.props.params.id);
+    this.props.actions.getCity(this.props.params.id);
   }
-  componentWillReceiveProps({city}){
-    this.setState({city});
+  componentWillReceiveProps({city, place}){
+    this.setState({city, place});
   }
   render() {
     return (
@@ -41,22 +42,25 @@ class City extends React.Component {
               <Tab eventKey={1} title="Places">
                 <ListCards
                   type="place"
-                  data={this.state.city.place}
+                  data={this.state.place}
                 />
               </Tab>
               <Tab eventKey={2} title="Todos">
-                {this.state.todos && this.state.todos.map(curr => (
-                  <AdvancedCard
+                {this.state.city.todo && this.state.city.todo.map((curr) => {
+                  console.log(curr,curr.photo,'todo');
+                  return <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <AdvancedCard
                     title={curr.title}
-                    imgURL={curr.photo}
-                    description={curr.text}
+                    imageURL={curr.photo}
+                    description={curr.text || ''}
                   />
-                ))}
+                  </div>
+                })}
               </Tab>
-              <Tab eventKey={3} title="Drinks">
+              <Tab eventKey={3} title="Food and Drinks">
                 <ListCards
                   type="basic"
-                  data={this.state.drinks}
+                  data={this.state.city.drinks}
                 />
               </Tab>
             </Tabs>
@@ -67,8 +71,10 @@ class City extends React.Component {
   }
 }
 function mapStateToProps(state){
+  console.log(state.city,'dsf');
   return {
-    city : state.city
+    city : state.city.city,
+    place : state.city.place
   };
 }
 function mapDispatchToProps(dispatch){

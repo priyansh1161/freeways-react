@@ -33,8 +33,11 @@ export default {
     places : []
   },
   city : {
-    todo : [],
-    drinks : [],
+    city : {
+        todo : [],
+        drinks : [],
+      },
+    place : []
   },
   place : {
     photos : []
