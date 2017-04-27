@@ -79,9 +79,15 @@ const Overview = ({stay}) =>{
         <div>
           <strong>Amenities</strong>
           <div>
-            {generateAmenities(stay.facilities.slice(0,stay.facilities.length/2))}
+            {stay.facilities.slice(0,stay.facilities.length/2).map(facility => (
+              <div>{facility}</div>
+            ))}
           </div>
-          {generateAmenities(stay.facilities.slice(stay.facilities.length/2, stay.facilities.length))}
+          <div>
+            {stay.facilities.slice(stay.facilities.length/2, stay.facilities.length).map(facility => (
+              <div>{facility}</div>
+            ))}
+          </div>
         </div>
         <div>
           <strong>Prices</strong>

@@ -6,13 +6,13 @@ const Stars = ({stars}) => {
   const emptyStarsLength = (halfStar ? 4: 5) - stars;
   let starsArray = [];
   for (let i = 0; i < starsLength; i++) {
-    starsArray.push(<i className="fa fa-star"/>);
+    starsArray.push(<i key={starsArray.length} className="fa fa-star"/>);
   }
   if (halfStar) {
-    starsArray.push(<i className="fa fa-star-half-o"/>);
+    starsArray.push(<i key={starsArray.length} className="fa fa-star-half-o"/>);
   }
   for (let i = 0; i < emptyStarsLength; i++) {
-    starsArray.push(<i className="fa fa-star-o"/>);
+    starsArray.push(<i key={starsArray.length} className="fa fa-star-o"/>);
   }
   return (
     <div>
