@@ -101,7 +101,7 @@ export function getPlace(id){
 
 export function getTopCities(){
   return function (dispatch) {
-    axios.get(`${baseURI}/api/places/limited/city`)
+    axios.get(`${baseURI}/api/city/?limit=4`)
       .then(({data}) => {
         console.log(data);
         dispatch(hideLoading());
@@ -123,7 +123,7 @@ export function getTopCities(){
 export function getTopPlaces(){
   return function (dispatch){
     dispatch(showLoading());
-    axios.get(`${baseURI}/api/places/?limit=4`)
+    axios.get(`${baseURI}/api/places/?limit=4&skip=1`)
       .then(({data}) => {
         console.log(data);
         dispatch(hideLoading());

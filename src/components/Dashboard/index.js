@@ -27,7 +27,6 @@ class Dashboard extends React.Component{
   }
   componentWillReceiveProps({cities, places, stays}){
     this.setState({cities, places, stays});
-    console.log(cities,'nuni');
   }
 
   render(){
@@ -51,8 +50,8 @@ class Dashboard extends React.Component{
         />
         <h4>Most Famous Home Stays</h4>
         <div className="stays row">
-          {this.state.stays.map(curr => (
-            <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          {this.state.stays.map((curr, index) => (
+            <div key={index} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
               <StayCard
                 id={curr._id}
                 imageURL={curr.photos[0]}

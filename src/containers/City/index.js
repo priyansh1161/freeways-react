@@ -13,7 +13,7 @@ class City extends React.Component {
     this.state = {
       city : props.city
     };
-    this.generateCarouselItems = this.generateCarouselItems.bind(this);
+    // this.generateCarouselItems = this.generateCarouselItems.bind(this);
 
   }
   componentWillMount(){
@@ -26,12 +26,12 @@ class City extends React.Component {
     return (
       <div>
         <Carousel>
-          <Carousel.Item key={i}>
+          <Carousel.Item key={0}>
             <div style={{
               height: '300px',
               backgroundPosition: 'center',
               backgroundSize: 'cover',
-              backgroundImage: `url(${this.city.photo})`
+              backgroundImage: `url(${this.state.city.photo})`
             }}/>
           </Carousel.Item>
         </Carousel>
@@ -45,7 +45,7 @@ class City extends React.Component {
                 />
               </Tab>
               <Tab eventKey={2} title="Todos">
-                {this.state.todos.map(curr => (
+                {this.state.todos && this.state.todos.map(curr => (
                   <AdvancedCard
                     title={curr.title}
                     imgURL={curr.photo}
