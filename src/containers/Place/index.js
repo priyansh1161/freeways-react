@@ -29,18 +29,17 @@ import * as placesActions from '../../actions/placesAction';
   }
 
   render() {
-    return (
+    return this.state.place ?
       <div>
         <Carousel>
           {this.generateCarouselItems()}
         </Carousel>
         <h2 className="text-center">
           { this.state.place.name } <br/>
-          <small>{ this.state.place.location.addr }</small>
+          <small>{  this.state.place.location && this.state.place.location.addr }</small>
         </h2>
-        {this.props.place.description.split(/((\/n)|\n|\r|\f)/g).map((curr, i) => <p key={i}>{curr}</p>)}
-      </div>
-    );
+        { this.state.place.description && this.state.place.description.split(/((\/n)|\n|\r|\f)/g).map((curr, i) => <p key={i}>{curr}</p>)}
+      </div> : null;
   }
 }
 

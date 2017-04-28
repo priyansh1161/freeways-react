@@ -63,7 +63,8 @@ class Cart extends React.Component {
           items[cart[i].vendor].push({ bikeId : cart[i].id, qty : cart[i].qty });
       }
       console.log(items);
-      this.props.actions.checkOut(location, '58091524fb0eb31100ccb267', startDate, endDate, items);
+      this.props.actions.checkOut(location, this.props.user._id || '58091524fb0eb31100ccb267', startDate, endDate, items);
+      this.context.router.push('/checkout');
     }
     // console.log(this.state.cart);
   }

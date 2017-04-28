@@ -29,6 +29,7 @@ class StaySidebar extends React.Component {
       largeAmount,
       this.props.stay._id
     );
+    this.context.router.push('/checkout');
   }
   render() {
     const smallDevice = window.matchMedia('(max-width: 768px)').matches;

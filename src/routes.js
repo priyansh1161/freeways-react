@@ -9,6 +9,7 @@ import Stays from './containers/Stays';
 import Stay from './containers/Stay';
 import Place from './containers/Place';
 import Auth from './containers/Auth';
+import About from './components/About';
 import UserProfile from './containers/UserProfile';
 import NotFoundPage from './components/NotFoundPage';
 import RegionComponent from './components/RegionComponent';
@@ -31,6 +32,8 @@ export default (
     <Route path="state/:id" component={StateComponent}/>
     <Route path="city/:id" component={CityComponent}/>
     <Route path="checkout/:id" component={Checkout}/>
+    <Route path="about" component={About}/>
+
     {/*<Route path="*" component={NotFoundPage}/>*/}
   </Route>
 );

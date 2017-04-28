@@ -45,8 +45,9 @@ class NavbarComponent extends React.Component {
             </LinkContainer>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1}>About Us</NavItem>
-            <NavItem eventKey={2}>Contact Us</NavItem>
+            <LinkContainer to="/about">
+               <NavItem eventKey={1}>About Us</NavItem>
+            </LinkContainer>
             {
               this.state.user._id ?
               <NavDropdown eventKey={3} title={this.state.name} id="basic-nav-dropdown">

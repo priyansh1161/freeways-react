@@ -24,8 +24,7 @@ class City extends React.Component {
     this.setState({city, place});
   }
   render() {
-    return (
-      <div>
+    return this.state.city ? <div>
         <Carousel>
           <Carousel.Item key={0}>
             <div style={{
@@ -50,10 +49,10 @@ class City extends React.Component {
                   console.log(curr,curr.photo,'todo');
                   return <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <AdvancedCard
-                    title={curr.title}
-                    imageURL={curr.photo}
-                    description={curr.text || ''}
-                  />
+                      title={curr.title}
+                      imageURL={curr.photo}
+                      description={curr.text || ''}
+                    />
                   </div>
                 })}
               </Tab>
@@ -66,8 +65,8 @@ class City extends React.Component {
             </Tabs>
           </div>
         </div>
-      </div>
-    );
+      </div> : null;
+
   }
 }
 function mapStateToProps(state){
